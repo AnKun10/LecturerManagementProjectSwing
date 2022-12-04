@@ -2,7 +2,7 @@
 
 <Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <NonVisualComponents>
-    <Component class="javax.swing.ButtonGroup" name="buttonGroup1">
+    <Component class="javax.swing.ButtonGroup" name="btnGroupSchedule">
     </Component>
     <Menu class="javax.swing.JMenuBar" name="jMenuBar1">
       <SubComponents>
@@ -18,10 +18,7 @@
             <MenuItem class="javax.swing.JMenuItem" name="menuPreference">
               <Properties>
                 <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
-                  <KeyStroke key="Ctrl+Alt+A"/>
-                </Property>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="C:\Users\Admin\Downloads\verified.png"/>
+                  <KeyStroke key="Ctrl+Alt+S"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Security"/>
               </Properties>
@@ -29,17 +26,16 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuPreferenceActionPerformed"/>
               </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JCheckBoxMenuItem" name="jCheckBoxMenuItem1">
+            <MenuItem class="javax.swing.JMenuItem" name="menuSecurity">
               <Properties>
                 <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
                   <KeyStroke key="Ctrl+Alt+P"/>
                 </Property>
-                <Property name="selected" type="boolean" value="true"/>
                 <Property name="text" type="java.lang.String" value="Preference"/>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="C:\Users\Admin\Downloads\preferences.png"/>
-                </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuSecurityActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>
@@ -78,6 +74,13 @@
               <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
+                      <Component id="btnAdd" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                      <Component id="btnEdit" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                      <Component id="btnFilter" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="lblSchedule" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="lblName" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -86,19 +89,12 @@
                       </Group>
                       <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="jComboBox1" max="32767" attributes="0"/>
-                          <Component id="radSchedule2" min="-2" max="-2" attributes="0"/>
-                          <Component id="radSchedule1" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtName" alignment="0" max="32767" attributes="0"/>
+                          <Component id="cboSpeciality" max="32767" attributes="0"/>
+                          <Component id="rdOdd" min="-2" max="-2" attributes="0"/>
+                          <Component id="rdEv" min="-2" max="-2" attributes="0"/>
                           <Component id="txtClassName" alignment="0" max="32767" attributes="0"/>
+                          <Component id="txtLecturerName" max="32767" attributes="0"/>
                       </Group>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <Component id="btnAdd" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
-                      <Component id="btnEdit" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-                      <Component id="jButton4" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -115,12 +111,12 @@
                       <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="lblName" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtName" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtLecturerName" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="lblSpeciality" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jComboBox1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="cboSpeciality" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -130,15 +126,15 @@
                       <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="lblSchedule" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="radSchedule1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="rdEv" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                      <Component id="radSchedule2" min="-2" max="-2" attributes="0"/>
+                      <Component id="rdOdd" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="81" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="btnAdd" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="btnEdit" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jButton4" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnFilter" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="79" max="32767" attributes="0"/>
                   </Group>
@@ -164,11 +160,11 @@
           <Properties>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
               <Table columnCount="5" rowCount="4">
-                <Column editable="true" title="Id" type="java.lang.Integer"/>
-                <Column editable="true" title="Name" type="java.lang.String"/>
+                <Column editable="false" title="CLass&apos;s Id" type="java.lang.Integer"/>
+                <Column editable="true" title="Lecturer&apos;s Name" type="java.lang.String"/>
                 <Column editable="true" title="Speciality" type="java.lang.String"/>
                 <Column editable="true" title="Class&apos;s Name" type="java.lang.String"/>
-                <Column editable="true" title="Schedule" type="java.lang.String"/>
+                <Column editable="false" title="Schedule" type="java.lang.String"/>
               </Table>
             </Property>
             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
@@ -204,12 +200,16 @@
               <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jTable1MouseClicked"/>
+            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTable1KeyPressed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
     <Component class="javax.swing.JLabel" name="lblName">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Name:"/>
+        <Property name="text" type="java.lang.String" value="Lecturer&apos;s Name:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblSpeciality">
@@ -227,31 +227,29 @@
         <Property name="text" type="java.lang.String" value="Schedule:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JRadioButton" name="radSchedule1">
+    <Component class="javax.swing.JRadioButton" name="rdEv">
       <Properties>
         <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-          <ComponentRef name="buttonGroup1"/>
+          <ComponentRef name="btnGroupSchedule"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Mon, Wed, Fri "/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="radSchedule1ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rdEvActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JRadioButton" name="radSchedule2">
+    <Component class="javax.swing.JRadioButton" name="rdOdd">
       <Properties>
         <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-          <ComponentRef name="buttonGroup1"/>
+          <ComponentRef name="btnGroupSchedule"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Tue, Thur, Sat"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="radSchedule2ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rdOddActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtName">
-    </Component>
-    <Component class="javax.swing.JComboBox" name="jComboBox1">
+    <Component class="javax.swing.JComboBox" name="cboSpeciality">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="5">
@@ -263,6 +261,9 @@
           </StringArray>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cboSpecialityActionPerformed"/>
+      </Events>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>
@@ -273,16 +274,24 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Add"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAddActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnEdit">
       <Properties>
         <Property name="text" type="java.lang.String" value="Edit"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEditActionPerformed"/>
+      </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton4">
+    <Component class="javax.swing.JButton" name="btnFilter">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Sort"/>
+        <Property name="text" type="java.lang.String" value="Filter"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtLecturerName">
     </Component>
   </SubComponents>
 </Form>

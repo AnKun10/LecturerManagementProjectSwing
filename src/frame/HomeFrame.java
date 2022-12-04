@@ -4,8 +4,8 @@
  */
 package frame;
 
+import constant.WorkplaceConstant;
 import entity.Admin;
-import entity.LecturerSchedule;
 import java.util.ArrayList;
 
 /**
@@ -18,6 +18,7 @@ public class HomeFrame extends javax.swing.JFrame {
      * Creates new form HomeFrame
      */
     private Admin admin;
+    private boolean LecturerSchedule;
     public HomeFrame() {
         initComponents();
     }
@@ -41,7 +42,7 @@ public class HomeFrame extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         menuPreference = new javax.swing.JMenuItem();
-        jCheckBoxMenuItem1 = new javax.swing.JCheckBoxMenuItem();
+        menuSecurity = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -56,6 +57,11 @@ public class HomeFrame extends javax.swing.JFrame {
         });
 
         btnNguyenDinhChieu.setText("Nguyễn Đình Chiểu");
+        btnNguyenDinhChieu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNguyenDinhChieuActionPerformed(evt);
+            }
+        });
 
         btnToHuu.setText("Tố Hữu");
         btnToHuu.addActionListener(new java.awt.event.ActionListener() {
@@ -65,6 +71,11 @@ public class HomeFrame extends javax.swing.JFrame {
         });
 
         btnLogout.setText("Logout");
+        btnLogout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLogoutActionPerformed(evt);
+            }
+        });
 
         jMenu1.setText("Setting");
         jMenu1.setToolTipText("");
@@ -74,8 +85,7 @@ public class HomeFrame extends javax.swing.JFrame {
             }
         });
 
-        menuPreference.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.ALT_DOWN_MASK | java.awt.event.InputEvent.CTRL_DOWN_MASK));
-        menuPreference.setIcon(new javax.swing.ImageIcon("C:\\Users\\Admin\\Downloads\\verified.png")); // NOI18N
+        menuPreference.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.ALT_DOWN_MASK | java.awt.event.InputEvent.CTRL_DOWN_MASK));
         menuPreference.setText("Security");
         menuPreference.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -84,11 +94,14 @@ public class HomeFrame extends javax.swing.JFrame {
         });
         jMenu1.add(menuPreference);
 
-        jCheckBoxMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.ALT_DOWN_MASK | java.awt.event.InputEvent.CTRL_DOWN_MASK));
-        jCheckBoxMenuItem1.setSelected(true);
-        jCheckBoxMenuItem1.setText("Preference");
-        jCheckBoxMenuItem1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Admin\\Downloads\\preferences.png")); // NOI18N
-        jMenu1.add(jCheckBoxMenuItem1);
+        menuSecurity.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.ALT_DOWN_MASK | java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        menuSecurity.setText("Preference");
+        menuSecurity.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuSecurityActionPerformed(evt);
+            }
+        });
+        jMenu1.add(menuSecurity);
 
         jMenuBar1.add(jMenu1);
 
@@ -130,26 +143,41 @@ public class HomeFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu1ActionPerformed
+    private void btnDichVongHauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDichVongHauActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenu1ActionPerformed
+        this.setVisible(false);
+        new ClazzMangementFrame(main.Main.clazzes, WorkplaceConstant.DICHVONGHAU.value).setVisible(true);
+    }//GEN-LAST:event_btnDichVongHauActionPerformed
+
+    private void btnToHuuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnToHuuActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        new ClazzMangementFrame(main.Main.clazzes, WorkplaceConstant.TOHUU.value).setVisible(true);
+    }//GEN-LAST:event_btnToHuuActionPerformed
+
+    private void btnNguyenDinhChieuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNguyenDinhChieuActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        new ClazzMangementFrame(main.Main.clazzes, WorkplaceConstant.NGUYENDINHCHIEU.value).setVisible(true);
+    }//GEN-LAST:event_btnNguyenDinhChieuActionPerformed
+
+    private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        new LoginFrame().setVisible(true);
+    }//GEN-LAST:event_btnLogoutActionPerformed
 
     private void menuPreferenceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuPreferenceActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_menuPreferenceActionPerformed
 
-    private void btnDichVongHauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDichVongHauActionPerformed
+    private void menuSecurityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuSecurityActionPerformed
         // TODO add your handling code here:
-        ArrayList<LecturerSchedule> lecturerSchedules = new ArrayList<>();
-        for (LecturerSchedule lecturerSchedule : lecturerSchedules){
-            if (lecturerSchedule.getLecturer().getWorkplace().equals())
-        }
-        new LecturerMangementFrame(lecturerSchedule, workplace).setVisible(true);
-    }//GEN-LAST:event_btnDichVongHauActionPerformed
+    }//GEN-LAST:event_menuSecurityActionPerformed
 
-    private void btnToHuuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnToHuuActionPerformed
+    private void jMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnToHuuActionPerformed
+    }//GEN-LAST:event_jMenu1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -191,10 +219,10 @@ public class HomeFrame extends javax.swing.JFrame {
     private javax.swing.JButton btnLogout;
     private javax.swing.JButton btnNguyenDinhChieu;
     private javax.swing.JButton btnToHuu;
-    private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem menuPreference;
+    private javax.swing.JMenuItem menuSecurity;
     // End of variables declaration//GEN-END:variables
 }

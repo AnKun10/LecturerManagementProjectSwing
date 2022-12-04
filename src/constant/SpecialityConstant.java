@@ -8,14 +8,17 @@ package constant;
  *
  * @author Admin
  */
-public enum WorkplaceConstant {
-    DICHVONGHAU("DỊCH VỌNG HẬU"),
-    NGUYENDINHCHIEU("NGUYỄN ĐÌNH CHIỂU"),
-    TOHUU("TỐ HỮU");
+public enum SpecialityConstant {
+    WEBBACKEND("WEB BACK-END"),
+    WEBFRONTEND("WEB FRONT-END"),
+    DEVOPSAWS("DEVOPS & AWS"),
+    MOBILE("MOBILE"),
+    STEM("STEM");
 
     public String value;
 
-    private WorkplaceConstant(String value) {
+    private SpecialityConstant(String value) {
         this.value = value;
     }
+    
 }

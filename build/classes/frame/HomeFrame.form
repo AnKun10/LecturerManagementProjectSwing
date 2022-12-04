@@ -16,10 +16,7 @@
             <MenuItem class="javax.swing.JMenuItem" name="menuPreference">
               <Properties>
                 <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
-                  <KeyStroke key="Ctrl+Alt+A"/>
-                </Property>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="C:\Users\Admin\Downloads\verified.png"/>
+                  <KeyStroke key="Ctrl+Alt+S"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Security"/>
               </Properties>
@@ -27,17 +24,16 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuPreferenceActionPerformed"/>
               </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JCheckBoxMenuItem" name="jCheckBoxMenuItem1">
+            <MenuItem class="javax.swing.JMenuItem" name="menuSecurity">
               <Properties>
                 <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
                   <KeyStroke key="Ctrl+Alt+P"/>
                 </Property>
-                <Property name="selected" type="boolean" value="true"/>
                 <Property name="text" type="java.lang.String" value="Preference"/>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="C:\Users\Admin\Downloads\preferences.png"/>
-                </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuSecurityActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>
@@ -123,6 +119,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Nguy&#x1ec5;n &#x110;&#xec;nh Chi&#x1ec3;u"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnNguyenDinhChieuActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnToHuu">
       <Properties>
@@ -136,6 +135,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Logout"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLogoutActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
