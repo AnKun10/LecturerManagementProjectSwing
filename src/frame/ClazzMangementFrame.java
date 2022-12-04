@@ -6,7 +6,9 @@ package frame;
 
 import constant.SpecialityConstant;
 import constant.WorkplaceConstant;
+import entity.Admin;
 import entity.Clazz;
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Vector;
 import javax.swing.JTable;
@@ -24,8 +26,9 @@ public class ClazzMangementFrame extends javax.swing.JFrame {
      */
     private ArrayList<Clazz> clazzes = new ArrayList<>();
     private String workplace;
+    private Admin admin;
     
-    public ClazzMangementFrame(ArrayList<Clazz> clazzes, String workplace){
+    public ClazzMangementFrame(Admin admin, ArrayList<Clazz> clazzes, String workplace){
         this.workplace = workplace;
         for (Clazz clazz : main.Main.clazzes) {
             if (WorkplaceConstant.DICHVONGHAU.equals(workplace)){
@@ -76,10 +79,10 @@ public class ClazzMangementFrame extends javax.swing.JFrame {
         btnFilter = new javax.swing.JButton();
         txtLecturerName = new javax.swing.JTextField();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        menuPreference = new javax.swing.JMenuItem();
+        menuSetting = new javax.swing.JMenu();
         menuSecurity = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
+        ckbmenuDarkMode = new javax.swing.JCheckBoxMenuItem();
+        menuAbout = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -168,36 +171,37 @@ public class ClazzMangementFrame extends javax.swing.JFrame {
 
         btnFilter.setText("Filter");
 
-        jMenu1.setText("Setting");
-        jMenu1.setToolTipText("");
-        jMenu1.addActionListener(new java.awt.event.ActionListener() {
+        menuSetting.setText("Setting");
+        menuSetting.setToolTipText("");
+        menuSetting.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenu1ActionPerformed(evt);
+                menuSettingActionPerformed(evt);
             }
         });
 
-        menuPreference.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.ALT_DOWN_MASK | java.awt.event.InputEvent.CTRL_DOWN_MASK));
-        menuPreference.setText("Security");
-        menuPreference.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuPreferenceActionPerformed(evt);
-            }
-        });
-        jMenu1.add(menuPreference);
-
-        menuSecurity.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.ALT_DOWN_MASK | java.awt.event.InputEvent.CTRL_DOWN_MASK));
-        menuSecurity.setText("Preference");
+        menuSecurity.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.ALT_DOWN_MASK | java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        menuSecurity.setText("Security");
         menuSecurity.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuSecurityActionPerformed(evt);
             }
         });
-        jMenu1.add(menuSecurity);
+        menuSetting.add(menuSecurity);
 
-        jMenuBar1.add(jMenu1);
+        ckbmenuDarkMode.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_D, java.awt.event.InputEvent.ALT_DOWN_MASK | java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        ckbmenuDarkMode.setSelected(true);
+        ckbmenuDarkMode.setText("Dark Mode");
+        ckbmenuDarkMode.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ckbmenuDarkModeActionPerformed(evt);
+            }
+        });
+        menuSetting.add(ckbmenuDarkMode);
 
-        jMenu2.setText("About");
-        jMenuBar1.add(jMenu2);
+        jMenuBar1.add(menuSetting);
+
+        menuAbout.setText("About");
+        jMenuBar1.add(menuAbout);
 
         setJMenuBar(jMenuBar1);
 
@@ -269,13 +273,15 @@ public class ClazzMangementFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void menuPreferenceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuPreferenceActionPerformed
+    private void menuSecurityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuSecurityActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_menuPreferenceActionPerformed
+        this.setVisible(false);
+        new SecurityFrame(admin).setVisible(true);
+    }//GEN-LAST:event_menuSecurityActionPerformed
 
-    private void jMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu1ActionPerformed
+    private void menuSettingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuSettingActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenu1ActionPerformed
+    }//GEN-LAST:event_menuSettingActionPerformed
 
     private void rdOddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdOddActionPerformed
         // TODO add your handling code here:
@@ -302,10 +308,6 @@ public class ClazzMangementFrame extends javax.swing.JFrame {
         System.out.println(clazzes);
         displayJTable();
     }//GEN-LAST:event_btnAddActionPerformed
-
-    private void menuSecurityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuSecurityActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_menuSecurityActionPerformed
 
     private void cboSpecialityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboSpecialityActionPerformed
         // TODO add your handling code here:
@@ -354,6 +356,15 @@ public class ClazzMangementFrame extends javax.swing.JFrame {
         displayJTable();
     }//GEN-LAST:event_btnEditActionPerformed
 
+    private void ckbmenuDarkModeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ckbmenuDarkModeActionPerformed
+        // TODO add your handling code here:
+        if (ckbmenuDarkMode.isSelected()){
+            this.getContentPane().setBackground(Color.black);
+        } else {
+            this.getContentPane().setBackground(Color.white);
+        }
+    }//GEN-LAST:event_ckbmenuDarkModeActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -396,8 +407,7 @@ public class ClazzMangementFrame extends javax.swing.JFrame {
     private javax.swing.JButton btnFilter;
     private javax.swing.ButtonGroup btnGroupSchedule;
     private javax.swing.JComboBox<String> cboSpeciality;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
+    private javax.swing.JCheckBoxMenuItem ckbmenuDarkMode;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
@@ -405,8 +415,9 @@ public class ClazzMangementFrame extends javax.swing.JFrame {
     private javax.swing.JLabel lblName;
     private javax.swing.JLabel lblSchedule;
     private javax.swing.JLabel lblSpeciality;
-    private javax.swing.JMenuItem menuPreference;
+    private javax.swing.JMenu menuAbout;
     private javax.swing.JMenuItem menuSecurity;
+    private javax.swing.JMenu menuSetting;
     private javax.swing.JRadioButton rdEv;
     private javax.swing.JRadioButton rdOdd;
     private javax.swing.JTextField txtClassName;
