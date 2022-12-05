@@ -9,24 +9,56 @@ package entity;
  * @author Admin
  */
 public class Lecturer extends Person{
-    private String speciality;
+    private boolean isAssigned;
     private int id;
     private static int autoId = 0;
 
-    public Lecturer(String name, int age, String username, String email, String phoneNumb, String password, String speciality) {
-        super(name, age, username, email, phoneNumb, password);
+    public Lecturer(String name, int age, String email, String phoneNumb) {
+        super(name, age, email, phoneNumb);
         this.id = ++autoId;
-        this.speciality = speciality;
+        this.isAssigned = false;
     }
 
     public Lecturer() {}
 
-    public String getSpeciality() {
-        return speciality;
+    public boolean isIsAssigned() {
+        return isAssigned;
     }
 
-    public void setSpeciality(String speciality) {
-        this.speciality = speciality;
+    public void setIsAssigned(boolean isAssigned) {
+        this.isAssigned = isAssigned;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPhoneNumb() {
+        return phoneNumb;
+    }
+
+    public void setPhoneNumb(String phoneNumb) {
+        this.phoneNumb = phoneNumb;
     }
 
     public int getId() {

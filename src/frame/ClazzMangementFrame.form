@@ -73,15 +73,15 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
               <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Group type="102" attributes="0">
                       <Component id="btnAdd" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                       <Component id="btnEdit" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-                      <Component id="btnFilter" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnLecturersList" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <Group type="102" alignment="0" attributes="0">
+                  <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="lblSchedule" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="lblName" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -89,17 +89,23 @@
                           <Component id="lblClassName" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="cboSpeciality" max="32767" attributes="0"/>
-                          <Component id="rdOdd" min="-2" max="-2" attributes="0"/>
-                          <Component id="rdEv" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtClassName" alignment="0" max="32767" attributes="0"/>
-                          <Component id="txtLecturerName" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="rdOdd" min="-2" max="-2" attributes="0"/>
+                              <Component id="rdEv" min="-2" max="-2" attributes="0"/>
+                              <Component id="cboSpeciality" alignment="0" pref="193" max="32767" attributes="0"/>
+                              <Component id="txtClassName" alignment="0" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Component id="spnLecturerId" max="32767" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="chkLecturerIdLeftBlank" min="-2" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                   </Group>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="jScrollPane1" pref="621" max="32767" attributes="0"/>
+              <Component id="jScrollPane1" pref="585" max="32767" attributes="0"/>
               <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -112,7 +118,8 @@
                       <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="lblName" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtLecturerName" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="spnLecturerId" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="chkLecturerIdLeftBlank" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -135,7 +142,7 @@
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="btnAdd" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="btnEdit" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnFilter" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnLecturersList" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="79" max="32767" attributes="0"/>
                   </Group>
@@ -210,7 +217,7 @@
     </Container>
     <Component class="javax.swing.JLabel" name="lblName">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Lecturer&apos;s Name:"/>
+        <Property name="text" type="java.lang.String" value="Lecturer&apos;s Id:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblSpeciality">
@@ -288,12 +295,23 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEditActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="btnFilter">
+    <Component class="javax.swing.JButton" name="btnLecturersList">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Filter"/>
+        <Property name="text" type="java.lang.String" value="Lecturers&apos; List"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLecturersListActionPerformed"/>
+      </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtLecturerName">
+    <Component class="javax.swing.JSpinner" name="spnLecturerId">
+    </Component>
+    <Component class="javax.swing.JCheckBox" name="chkLecturerIdLeftBlank">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Left Blank"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="chkLecturerIdLeftBlankActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

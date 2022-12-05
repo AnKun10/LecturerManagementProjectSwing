@@ -8,6 +8,7 @@ import constant.SpecialityConstant;
 import constant.WorkplaceConstant;
 import entity.Admin;
 import entity.Clazz;
+import entity.Lecturer;
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Vector;
@@ -27,24 +28,41 @@ public class ClazzMangementFrame extends javax.swing.JFrame {
     private ArrayList<Clazz> clazzes = new ArrayList<>();
     private String workplace;
     private Admin admin;
+    private Lecturer lecturerOrigin;
     
     public ClazzMangementFrame(Admin admin, ArrayList<Clazz> clazzes, String workplace){
+        initComponents();
         this.workplace = workplace;
         for (Clazz clazz : main.Main.clazzes) {
             if (WorkplaceConstant.DICHVONGHAU.equals(workplace)){
                 this.clazzes.add(clazz);
+            } else if (WorkplaceConstant.NGUYENDINHCHIEU.equals(workplace)) {
+                this.clazzes.add(clazz);  
+            } else if (WorkplaceConstant.TOHUU.equals(workplace)) {
+                this.clazzes.add(clazz);  
             }
         }
-        displayJTable();
-    }
-    public ClazzMangementFrame() {
-        initComponents();
-        for (Clazz clazz : Main.clazzes) {
+        for (Clazz clazz : clazzes) {
             Vector vectorRow = new Vector();
             vectorRow.add(clazz.getId());
             if (clazz.getLecturer() == null){
-//                vectorRow.add("");
-                vectorRow.add(clazz.getLecturerName());
+                vectorRow.add("");
+            } else {
+                vectorRow.add(clazz.getLecturer().getName());
+            }
+            vectorRow.add(clazz.getSpeciality());
+            vectorRow.add(clazz.getName());
+            vectorRow.add(clazz.getSchedule());
+        }
+        displayJTable(jTable1);
+    }
+    public ClazzMangementFrame() {
+        initComponents();
+        for (Clazz clazz : clazzes) {
+            Vector vectorRow = new Vector();
+            vectorRow.add(clazz.getId());
+            if (clazz.getLecturer() == null){
+                vectorRow.add("");
             } else {
                 vectorRow.add(clazz.getLecturer().getName());
             }
@@ -76,8 +94,9 @@ public class ClazzMangementFrame extends javax.swing.JFrame {
         txtClassName = new javax.swing.JTextField();
         btnAdd = new javax.swing.JButton();
         btnEdit = new javax.swing.JButton();
-        btnFilter = new javax.swing.JButton();
-        txtLecturerName = new javax.swing.JTextField();
+        btnLecturersList = new javax.swing.JButton();
+        spnLecturerId = new javax.swing.JSpinner();
+        chkLecturerIdLeftBlank = new javax.swing.JCheckBox();
         jMenuBar1 = new javax.swing.JMenuBar();
         menuSetting = new javax.swing.JMenu();
         menuSecurity = new javax.swing.JMenuItem();
@@ -124,7 +143,7 @@ public class ClazzMangementFrame extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTable1);
 
-        lblName.setText("Lecturer's Name:");
+        lblName.setText("Lecturer's Id:");
 
         lblSpeciality.setText("Speciality:");
 
@@ -134,6 +153,11 @@ public class ClazzMangementFrame extends javax.swing.JFrame {
 
         btnGroupSchedule.add(rdEv);
         rdEv.setText("Mon, Wed, Fri ");
+        rdEv.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                rdEvMouseClicked(evt);
+            }
+        });
         rdEv.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rdEvActionPerformed(evt);
@@ -169,7 +193,19 @@ public class ClazzMangementFrame extends javax.swing.JFrame {
             }
         });
 
-        btnFilter.setText("Filter");
+        btnLecturersList.setText("Lecturers' List");
+        btnLecturersList.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLecturersListActionPerformed(evt);
+            }
+        });
+
+        chkLecturerIdLeftBlank.setText("Left Blank");
+        chkLecturerIdLeftBlank.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkLecturerIdLeftBlankActionPerformed(evt);
+            }
+        });
 
         menuSetting.setText("Setting");
         menuSetting.setToolTipText("");
@@ -211,13 +247,13 @@ public class ClazzMangementFrame extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnAdd)
                         .addGap(32, 32, 32)
                         .addComponent(btnEdit)
                         .addGap(28, 28, 28)
-                        .addComponent(btnFilter))
+                        .addComponent(btnLecturersList))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblSchedule)
@@ -225,14 +261,18 @@ public class ClazzMangementFrame extends javax.swing.JFrame {
                             .addComponent(lblSpeciality)
                             .addComponent(lblClassName))
                         .addGap(28, 28, 28)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(cboSpeciality, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(rdOdd)
-                            .addComponent(rdEv)
-                            .addComponent(txtClassName)
-                            .addComponent(txtLecturerName))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(rdOdd)
+                                .addComponent(rdEv)
+                                .addComponent(cboSpeciality, 0, 193, Short.MAX_VALUE)
+                                .addComponent(txtClassName))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(spnLecturerId)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(chkLecturerIdLeftBlank)))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 621, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 585, Short.MAX_VALUE)
                 .addGap(17, 17, 17))
         );
         layout.setVerticalGroup(
@@ -243,7 +283,8 @@ public class ClazzMangementFrame extends javax.swing.JFrame {
                         .addGap(30, 30, 30)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblName)
-                            .addComponent(txtLecturerName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(spnLecturerId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(chkLecturerIdLeftBlank))
                         .addGap(25, 25, 25)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblSpeciality)
@@ -262,7 +303,7 @@ public class ClazzMangementFrame extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnAdd)
                             .addComponent(btnEdit)
-                            .addComponent(btnFilter))
+                            .addComponent(btnLecturersList))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 79, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
@@ -293,7 +334,19 @@ public class ClazzMangementFrame extends javax.swing.JFrame {
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         // TODO add your handling code here:
-        String lecturerName = txtLecturerName.getText();
+        try {
+            spnLecturerId.commitEdit();
+        } catch ( java.text.ParseException e ) { spnLecturerId.setValue(0);}
+        int lecturerId = (Integer) spnLecturerId.getValue();
+        Lecturer lecturer = null;
+        if (!chkLecturerIdLeftBlank.isSelected()) {
+            for (Lecturer lecturerTemp : Main.lecturers){
+                if (lecturerId == lecturerTemp.getId()) {
+                    lecturer = lecturerTemp;
+                    lecturerTemp.setIsAssigned(true);
+                }
+            }
+        }
         String className = txtClassName.getText();
         String speciality = (String) cboSpeciality.getSelectedItem();
         String schedule ="";
@@ -303,10 +356,11 @@ public class ClazzMangementFrame extends javax.swing.JFrame {
         else if (rdOdd.isSelected()){
             schedule = rdOdd.getText();
         }
-        Clazz clazzNew = new Clazz(className, this.workplace, speciality, schedule, lecturerName);
+        Clazz clazzNew = new Clazz(className, this.workplace, speciality, schedule, lecturer);
         clazzes.add(clazzNew);
+        Main.clazzes.add(clazzNew);
         System.out.println(clazzes);
-        displayJTable();
+        displayJTable(jTable1);
     }//GEN-LAST:event_btnAddActionPerformed
 
     private void cboSpecialityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboSpecialityActionPerformed
@@ -321,7 +375,18 @@ public class ClazzMangementFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         if(evt.getClickCount()==1){
             int row = jTable1.getSelectedRow();
-            txtLecturerName.setText(clazzes.get(row).getLecturerName());
+            if (clazzes.get(row).getLecturer() == null) {
+                spnLecturerId.setValue(0);
+                chkLecturerIdLeftBlank.setSelected(true);
+            } else {
+                spnLecturerId.setValue(clazzes.get(row).getLecturer().getId());
+                for (Lecturer lecturer : Main.lecturers){
+                    if (lecturer.getId() == clazzes.get(row).getLecturer().getId()) {
+                        lecturerOrigin = lecturer;
+                    }
+                }
+                chkLecturerIdLeftBlank.setSelected(false);
+            }
             if (clazzes.get(row).getSpeciality().equals(SpecialityConstant.WEBFRONTEND.value)){
                 cboSpeciality.setSelectedIndex(1);
             } else if (clazzes.get(row).getSpeciality().equals(SpecialityConstant.WEBBACKEND.value)){
@@ -334,15 +399,37 @@ public class ClazzMangementFrame extends javax.swing.JFrame {
                 cboSpeciality.setSelectedIndex(4);
             }
             txtClassName.setText(clazzes.get(row).getName());
+            if (clazzes.get(row).getSchedule().equals(rdEv.getText())) {
+                rdEv.setSelected(true);
+                rdOdd.setSelected(false);
+            } else if (clazzes.get(row).getSchedule().equals(rdOdd.getText())) {
+                rdEv.setSelected(false);
+                rdOdd.setSelected(true);
+            }
         }
     }//GEN-LAST:event_jTable1MouseClicked
 
     private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
         // TODO add your handling code here:
+        if (jTable1.getSelectedRow() == -1) {
+            return;
+        }
         int row = jTable1.getSelectedRow();
         Clazz clazz = clazzes.get(row);
-        clazz.setLecturerName(txtLecturerName.getText());
-        clazzes.set(row, clazz);
+        int lecturerId = (Integer) spnLecturerId.getValue();
+        Lecturer lecturer = null;
+        if (!chkLecturerIdLeftBlank.isSelected()) {
+            for (Lecturer lecturerTemp : Main.lecturers){
+                if (lecturerId == lecturerTemp.getId()) {
+                    lecturer = lecturerTemp;
+                    lecturerTemp.setIsAssigned(true);
+                    if (lecturerTemp.getId() != lecturerOrigin.getId()) {
+                        lecturerOrigin.setIsAssigned(false);
+                    }
+                }
+            }
+        }
+        clazz.setLecturer(lecturer);
         clazz.setName( txtClassName.getText());
         clazz.setSpeciality( (String) cboSpeciality.getSelectedItem());
         String schedule ="";
@@ -353,17 +440,40 @@ public class ClazzMangementFrame extends javax.swing.JFrame {
             schedule = rdOdd.getText();
         }
         clazz.setSchedule(schedule);
-        displayJTable();
+        clazzes.set(row, clazz);
+        displayJTable(jTable1);
     }//GEN-LAST:event_btnEditActionPerformed
 
     private void ckbmenuDarkModeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ckbmenuDarkModeActionPerformed
         // TODO add your handling code here:
         if (ckbmenuDarkMode.isSelected()){
             this.getContentPane().setBackground(Color.black);
+            lblClassName.setForeground(Color.white);
+            lblName.setForeground(Color.white);
+            lblSchedule.setForeground(Color.white);
+            lblSpeciality.setForeground(Color.white);
+            rdEv.setForeground(Color.white);
+            rdOdd.setForeground(Color.white);
         } else {
             this.getContentPane().setBackground(Color.white);
+            lblClassName.setForeground(Color.black);
+            lblName.setForeground(Color.black);
+            lblSchedule.setForeground(Color.black); 
+            lblSpeciality.setForeground(Color.black);
+            rdEv.setForeground(Color.black);
+            rdOdd.setForeground(Color.black);
         }
     }//GEN-LAST:event_ckbmenuDarkModeActionPerformed
+
+    private void btnLecturersListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLecturersListActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        new LecturerMangagementFrame(admin, workplace, clazzes).setVisible(true);
+    }//GEN-LAST:event_btnLecturersListActionPerformed
+
+    private void chkLecturerIdLeftBlankActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkLecturerIdLeftBlankActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_chkLecturerIdLeftBlankActionPerformed
 
     /**
      * @param args the command line arguments
@@ -404,9 +514,10 @@ public class ClazzMangementFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdd;
     private javax.swing.JButton btnEdit;
-    private javax.swing.JButton btnFilter;
     private javax.swing.ButtonGroup btnGroupSchedule;
+    private javax.swing.JButton btnLecturersList;
     private javax.swing.JComboBox<String> cboSpeciality;
+    private javax.swing.JCheckBox chkLecturerIdLeftBlank;
     private javax.swing.JCheckBoxMenuItem ckbmenuDarkMode;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
@@ -420,20 +531,24 @@ public class ClazzMangementFrame extends javax.swing.JFrame {
     private javax.swing.JMenu menuSetting;
     private javax.swing.JRadioButton rdEv;
     private javax.swing.JRadioButton rdOdd;
+    private javax.swing.JSpinner spnLecturerId;
     private javax.swing.JTextField txtClassName;
-    private javax.swing.JTextField txtLecturerName;
     // End of variables declaration//GEN-END:variables
 
-    private void displayJTable() {
-        String col[] = {"ID","Lecturer's Name","Speciality", "Class's Name", "Schedule"};
+    private void displayJTable(JTable jTable) {
+        String col[] = {"Class's Id","Lecturer's Name","Speciality", "Class's Name", "Schedule"};
         DefaultTableModel tableModel = new DefaultTableModel(col,0);
         for(int i=0;i<clazzes.size();i++){
-            Object[] obj={clazzes.get(i).getId(), clazzes.get(i).getLecturerName(), 
+            String lecturerName = "";
+            if (clazzes.get(i).getLecturer() != null) {
+                lecturerName = clazzes.get(i).getLecturer().getName();
+            }
+            Object[] obj={clazzes.get(i).getId(), lecturerName, 
                 clazzes.get(i).getSpeciality(), clazzes.get(i).getName(), 
                 clazzes.get(i).getSchedule()};
             
             tableModel.addRow(obj);
         }
-        jTable1.setModel(tableModel);
+        jTable.setModel(tableModel);
     }
 }

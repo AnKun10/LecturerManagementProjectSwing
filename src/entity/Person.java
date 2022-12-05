@@ -10,31 +10,18 @@ package entity;
  */
 class Person {
     protected String name;
-    protected String gender;
     protected int age;
-    protected String username;
     protected String email;
     protected String phoneNumb;
-    protected String password;
     
-    public Person(String name, int age, String username, String email, String phoneNumb, String password) {
+    public Person(String name, int age, String email, String phoneNumb) {
         this.name = name;
         this.age = age;
-        this.username = username;
         this.email = email;
         this.phoneNumb = phoneNumb;
-        this.password = password;
     }
 
     public Person() { }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
 
     public String getName() {
         return name;
@@ -50,14 +37,6 @@ class Person {
 
     public void setAge(int age) {
         this.age = age;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
     }
 
     public String getEmail() {

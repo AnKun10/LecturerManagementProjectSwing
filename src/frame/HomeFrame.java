@@ -8,6 +8,7 @@ import constant.WorkplaceConstant;
 import entity.Admin;
 import java.awt.Color;
 import java.util.ArrayList;
+import main.Main;
 
 /**
  *
@@ -148,19 +149,19 @@ public class HomeFrame extends javax.swing.JFrame {
     private void btnDichVongHauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDichVongHauActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
-        new ClazzMangementFrame(admin, main.Main.clazzes, WorkplaceConstant.DICHVONGHAU.value).setVisible(true);
+        new ClazzMangementFrame(admin, Main.clazzes, WorkplaceConstant.DICHVONGHAU.value).setVisible(true);
     }//GEN-LAST:event_btnDichVongHauActionPerformed
 
     private void btnToHuuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnToHuuActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
-        new ClazzMangementFrame(admin, main.Main.clazzes, WorkplaceConstant.TOHUU.value).setVisible(true);
+        new ClazzMangementFrame(admin, Main.clazzes, WorkplaceConstant.TOHUU.value).setVisible(true);
     }//GEN-LAST:event_btnToHuuActionPerformed
 
     private void btnNguyenDinhChieuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNguyenDinhChieuActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
-        new ClazzMangementFrame(admin, main.Main.clazzes, WorkplaceConstant.NGUYENDINHCHIEU.value).setVisible(true);
+        new ClazzMangementFrame(admin, Main.clazzes, WorkplaceConstant.NGUYENDINHCHIEU.value).setVisible(true);
     }//GEN-LAST:event_btnNguyenDinhChieuActionPerformed
 
     private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
