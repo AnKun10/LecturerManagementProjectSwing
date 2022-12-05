@@ -29,6 +29,7 @@ public class LecturerMangagementFrame extends javax.swing.JFrame {
     
     public LecturerMangagementFrame(Admin admin, String workplace, ArrayList<Clazz> clazzes){
         initComponents();
+        this.setLocationRelativeTo(null);
         this.admin = admin;
         this.workplace = workplace;
         this.clazzes = clazzes;
@@ -40,6 +41,7 @@ public class LecturerMangagementFrame extends javax.swing.JFrame {
             vectorRow.add(lecturer.getPhoneNumb());
             vectorRow.add(lecturer.isIsAssigned());
         }
+        spnAge.setValue(18);
         displayJTable(jTable1);
     }
     public LecturerMangagementFrame() {
@@ -55,6 +57,15 @@ public class LecturerMangagementFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        diaInvalidDialog = new javax.swing.JDialog();
+        lblInvalidDialog = new javax.swing.JLabel();
+        btnCloseInvalidDialog = new javax.swing.JButton();
+        diaSuccessfullyAdded = new javax.swing.JDialog();
+        lblSuccessfullyAddedDialog = new javax.swing.JLabel();
+        btnCloseAddedDialog = new javax.swing.JButton();
+        diaSuccessfullyEdited = new javax.swing.JDialog();
+        lblSuccessfullyEditedDialog = new javax.swing.JLabel();
+        btnCloseEditedDialog = new javax.swing.JButton();
         btnBackToClazzMangagementPage = new javax.swing.JButton();
         lblName = new javax.swing.JLabel();
         lblAge = new javax.swing.JLabel();
@@ -66,14 +77,113 @@ public class LecturerMangagementFrame extends javax.swing.JFrame {
         spnAge = new javax.swing.JSpinner();
         btnAdd = new javax.swing.JButton();
         btnEdit = new javax.swing.JButton();
-        btnFilter = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        chkLecturerAgeLeftBlank = new javax.swing.JCheckBox();
         jMenuBar1 = new javax.swing.JMenuBar();
         menuSetting = new javax.swing.JMenu();
         menuSecurity = new javax.swing.JMenuItem();
         ckbmenuDarkMode = new javax.swing.JCheckBoxMenuItem();
         menuAbout = new javax.swing.JMenu();
+
+        lblInvalidDialog.setText("INVALID INPUT, PLEASE TRY AGAIN !");
+
+        btnCloseInvalidDialog.setText("Ok");
+        btnCloseInvalidDialog.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCloseInvalidDialogActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout diaInvalidDialogLayout = new javax.swing.GroupLayout(diaInvalidDialog.getContentPane());
+        diaInvalidDialog.getContentPane().setLayout(diaInvalidDialogLayout);
+        diaInvalidDialogLayout.setHorizontalGroup(
+            diaInvalidDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(diaInvalidDialogLayout.createSequentialGroup()
+                .addGroup(diaInvalidDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(diaInvalidDialogLayout.createSequentialGroup()
+                        .addGap(79, 79, 79)
+                        .addComponent(lblInvalidDialog))
+                    .addGroup(diaInvalidDialogLayout.createSequentialGroup()
+                        .addGap(150, 150, 150)
+                        .addComponent(btnCloseInvalidDialog)))
+                .addContainerGap(81, Short.MAX_VALUE))
+        );
+        diaInvalidDialogLayout.setVerticalGroup(
+            diaInvalidDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(diaInvalidDialogLayout.createSequentialGroup()
+                .addGap(101, 101, 101)
+                .addComponent(lblInvalidDialog)
+                .addGap(72, 72, 72)
+                .addComponent(btnCloseInvalidDialog)
+                .addContainerGap(77, Short.MAX_VALUE))
+        );
+
+        lblSuccessfullyAddedDialog.setText("Successfully Added !");
+
+        btnCloseAddedDialog.setText("Ok");
+        btnCloseAddedDialog.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCloseAddedDialogActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout diaSuccessfullyAddedLayout = new javax.swing.GroupLayout(diaSuccessfullyAdded.getContentPane());
+        diaSuccessfullyAdded.getContentPane().setLayout(diaSuccessfullyAddedLayout);
+        diaSuccessfullyAddedLayout.setHorizontalGroup(
+            diaSuccessfullyAddedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(diaSuccessfullyAddedLayout.createSequentialGroup()
+                .addGroup(diaSuccessfullyAddedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(diaSuccessfullyAddedLayout.createSequentialGroup()
+                        .addGap(150, 150, 150)
+                        .addComponent(btnCloseAddedDialog))
+                    .addGroup(diaSuccessfullyAddedLayout.createSequentialGroup()
+                        .addGap(127, 127, 127)
+                        .addComponent(lblSuccessfullyAddedDialog)))
+                .addContainerGap(141, Short.MAX_VALUE))
+        );
+        diaSuccessfullyAddedLayout.setVerticalGroup(
+            diaSuccessfullyAddedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(diaSuccessfullyAddedLayout.createSequentialGroup()
+                .addGap(108, 108, 108)
+                .addComponent(lblSuccessfullyAddedDialog)
+                .addGap(65, 65, 65)
+                .addComponent(btnCloseAddedDialog)
+                .addContainerGap(77, Short.MAX_VALUE))
+        );
+
+        lblSuccessfullyEditedDialog.setText("Successfully Edited !");
+
+        btnCloseEditedDialog.setText("Ok");
+        btnCloseEditedDialog.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCloseEditedDialogActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout diaSuccessfullyEditedLayout = new javax.swing.GroupLayout(diaSuccessfullyEdited.getContentPane());
+        diaSuccessfullyEdited.getContentPane().setLayout(diaSuccessfullyEditedLayout);
+        diaSuccessfullyEditedLayout.setHorizontalGroup(
+            diaSuccessfullyEditedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(diaSuccessfullyEditedLayout.createSequentialGroup()
+                .addGroup(diaSuccessfullyEditedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(diaSuccessfullyEditedLayout.createSequentialGroup()
+                        .addGap(150, 150, 150)
+                        .addComponent(btnCloseEditedDialog))
+                    .addGroup(diaSuccessfullyEditedLayout.createSequentialGroup()
+                        .addGap(127, 127, 127)
+                        .addComponent(lblSuccessfullyEditedDialog)))
+                .addContainerGap(143, Short.MAX_VALUE))
+        );
+        diaSuccessfullyEditedLayout.setVerticalGroup(
+            diaSuccessfullyEditedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(diaSuccessfullyEditedLayout.createSequentialGroup()
+                .addGap(108, 108, 108)
+                .addComponent(lblSuccessfullyEditedDialog)
+                .addGap(65, 65, 65)
+                .addComponent(btnCloseEditedDialog)
+                .addContainerGap(77, Short.MAX_VALUE))
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -105,8 +215,6 @@ public class LecturerMangagementFrame extends javax.swing.JFrame {
                 btnEditActionPerformed(evt);
             }
         });
-
-        btnFilter.setText("Filter");
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -140,6 +248,13 @@ public class LecturerMangagementFrame extends javax.swing.JFrame {
             }
         });
         jScrollPane1.setViewportView(jTable1);
+
+        chkLecturerAgeLeftBlank.setText("Left Blank");
+        chkLecturerAgeLeftBlank.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkLecturerAgeLeftBlankActionPerformed(evt);
+            }
+        });
 
         menuSetting.setText("Setting");
         menuSetting.setToolTipText("");
@@ -180,32 +295,34 @@ public class LecturerMangagementFrame extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(14, 14, 14)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnBackToClazzMangagementPage)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btnAdd)
+                        .addGap(20, 20, 20)
+                        .addComponent(btnBackToClazzMangagementPage))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(67, 67, 67)
+                            .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(32, 32, 32)
+                            .addComponent(btnEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addContainerGap()
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(lblAge)
                                 .addComponent(lblName)
                                 .addComponent(lblEmail)
-                                .addComponent(lblPhoneNumber)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtName, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
-                                    .addComponent(txtEmail)
-                                    .addComponent(txtPhoneNumber)
-                                    .addComponent(spnAge, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(42, 42, 42)
-                                .addComponent(btnEdit)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
-                                .addComponent(btnFilter)))))
+                                .addComponent(lblPhoneNumber))
+                            .addGap(24, 24, 24)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(spnAge)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(chkLecturerAgeLeftBlank, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtPhoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 648, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 643, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -214,17 +331,18 @@ public class LecturerMangagementFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnBackToClazzMangagementPage)
+                        .addGap(72, 72, 72)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnBackToClazzMangagementPage)
-                                .addGap(43, 43, 43)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(lblName)
                                     .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(47, 47, 47))
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(lblAge)
-                                .addComponent(spnAge, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(spnAge, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(chkLecturerAgeLeftBlank)))
                         .addGap(22, 22, 22)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblEmail)
@@ -236,8 +354,7 @@ public class LecturerMangagementFrame extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnAdd)
-                            .addComponent(btnEdit)
-                            .addComponent(btnFilter))
+                            .addComponent(btnEdit))
                         .addGap(71, 71, 71))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -264,10 +381,23 @@ public class LecturerMangagementFrame extends javax.swing.JFrame {
         String email = txtEmail.getText();
         try {
             spnAge.commitEdit();
-        } catch ( java.text.ParseException e ) { spnAge.setValue(0); }
+        } catch ( java.text.ParseException e ) { spnAge.setValue(18); }
         int age = (Integer) spnAge.getValue();
-        Lecturer lecturer = new Lecturer(name, age, email, phoneNumb);
-        Main.lecturers.add(lecturer);
+        if (chkLecturerAgeLeftBlank.isSelected()) {
+            age = -1;
+        }
+        if ((name.equals("")||Main.validator.isValidName(name)) && (email.equals("")||Main.validator.isValidEmail(email)) && (phoneNumb.equals("")||Main.validator.isValidPhoneNumber(phoneNumb)) && (chkLecturerAgeLeftBlank.isSelected()||(age>=18&&age<=100))){
+            Lecturer lecturer = new Lecturer(name, age, email, phoneNumb);
+            Main.lecturers.add(lecturer);
+            diaSuccessfullyAdded.pack();
+            diaSuccessfullyAdded.setVisible(true);
+            diaSuccessfullyAdded.getPreferredSize();
+        } else {
+            diaInvalidDialog.pack();
+            diaInvalidDialog.setVisible(true);
+            diaInvalidDialog.getPreferredSize();
+        }
+         
         displayJTable(jTable1);
     }//GEN-LAST:event_btnAddActionPerformed
 
@@ -301,15 +431,33 @@ public class LecturerMangagementFrame extends javax.swing.JFrame {
 
     private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
         // TODO add your handling code here:
+        if (jTable1.getSelectedRow() == -1) {
+            return;
+        }
         Lecturer lecturerSelected = Main.lecturers.get(jTable1.getSelectedRow());
         try {
             spnAge.commitEdit();
-        } catch ( java.text.ParseException e ) { spnAge.setValue(0); }
+        } catch ( java.text.ParseException e ) { spnAge.setValue(18); }
         int age = (Integer) spnAge.getValue();
+        if (chkLecturerAgeLeftBlank.isSelected()) {
+            age = -1;
+        }
         lecturerSelected.setAge(age);
-        lecturerSelected.setEmail(txtEmail.getText());
-        lecturerSelected.setName(txtName.getText());
-        lecturerSelected.setPhoneNumb(txtPhoneNumber.getText());
+        String email = txtEmail.getText();
+        String name = txtName.getText();
+        String phoneNumb = txtPhoneNumber.getText();
+        if ((name.equals("")||Main.validator.isValidName(name)) && (email.equals("")||Main.validator.isValidEmail(email)) && (phoneNumb.equals("")||Main.validator.isValidPhoneNumber(phoneNumb)) && (chkLecturerAgeLeftBlank.isSelected()||(age>=18&&age<=100))) {
+            lecturerSelected.setEmail(email);
+            lecturerSelected.setName(name);
+            lecturerSelected.setPhoneNumb(phoneNumb);
+            diaSuccessfullyEdited.pack();
+            diaSuccessfullyEdited.setVisible(true);
+            diaSuccessfullyEdited.getPreferredSize();
+        } else {
+            diaInvalidDialog.pack();
+            diaInvalidDialog.setVisible(true);
+            diaInvalidDialog.getPreferredSize();
+        }
         displayJTable(jTable1);
     }//GEN-LAST:event_btnEditActionPerformed
 
@@ -318,6 +466,25 @@ public class LecturerMangagementFrame extends javax.swing.JFrame {
         this.setVisible(false);
         new ClazzMangementFrame(admin, clazzes, workplace).setVisible(true);
     }//GEN-LAST:event_btnBackToClazzMangagementPageActionPerformed
+
+    private void btnCloseInvalidDialogActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseInvalidDialogActionPerformed
+        // TODO add your handling code here:
+        diaInvalidDialog.setVisible(false);
+    }//GEN-LAST:event_btnCloseInvalidDialogActionPerformed
+
+    private void chkLecturerAgeLeftBlankActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkLecturerAgeLeftBlankActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_chkLecturerAgeLeftBlankActionPerformed
+
+    private void btnCloseAddedDialogActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseAddedDialogActionPerformed
+        // TODO add your handling code here:
+        diaSuccessfullyAdded.setVisible(false);
+    }//GEN-LAST:event_btnCloseAddedDialogActionPerformed
+
+    private void btnCloseEditedDialogActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseEditedDialogActionPerformed
+        // TODO add your handling code here:
+        diaSuccessfullyEdited.setVisible(false);
+    }//GEN-LAST:event_btnCloseEditedDialogActionPerformed
 
     /**
      * @param args the command line arguments
@@ -357,16 +524,25 @@ public class LecturerMangagementFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdd;
     private javax.swing.JButton btnBackToClazzMangagementPage;
+    private javax.swing.JButton btnCloseAddedDialog;
+    private javax.swing.JButton btnCloseEditedDialog;
+    private javax.swing.JButton btnCloseInvalidDialog;
     private javax.swing.JButton btnEdit;
-    private javax.swing.JButton btnFilter;
+    private javax.swing.JCheckBox chkLecturerAgeLeftBlank;
     private javax.swing.JCheckBoxMenuItem ckbmenuDarkMode;
+    private javax.swing.JDialog diaInvalidDialog;
+    private javax.swing.JDialog diaSuccessfullyAdded;
+    private javax.swing.JDialog diaSuccessfullyEdited;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JLabel lblAge;
     private javax.swing.JLabel lblEmail;
+    private javax.swing.JLabel lblInvalidDialog;
     private javax.swing.JLabel lblName;
     private javax.swing.JLabel lblPhoneNumber;
+    private javax.swing.JLabel lblSuccessfullyAddedDialog;
+    private javax.swing.JLabel lblSuccessfullyEditedDialog;
     private javax.swing.JMenu menuAbout;
     private javax.swing.JMenuItem menuSecurity;
     private javax.swing.JMenu menuSetting;

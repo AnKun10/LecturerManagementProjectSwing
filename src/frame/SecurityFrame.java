@@ -18,7 +18,10 @@ public class SecurityFrame extends javax.swing.JFrame {
      */
     private Admin admin;
     public SecurityFrame(Admin admin) {
+        initComponents();
+        this.setLocationRelativeTo(null);
         this.admin = admin;
+ 
         txtName.setText(admin.getName());
         txtUsername.setText(admin.getUsername());
         txtEmail.setText(admin.getEmail());
@@ -28,6 +31,7 @@ public class SecurityFrame extends javax.swing.JFrame {
     }
     public SecurityFrame() {
         initComponents();
+        
     }
 
     /**
@@ -208,8 +212,8 @@ public class SecurityFrame extends javax.swing.JFrame {
                                 .addGroup(layout.createSequentialGroup()
                                     .addComponent(lblAge)
                                     .addGap(90, 90, 90)
-                                    .addComponent(spnAge, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(220, 220, 220))))))
+                                    .addComponent(spnAge, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(150, 150, 150))))))
                 .addContainerGap(299, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -268,7 +272,7 @@ public class SecurityFrame extends javax.swing.JFrame {
             spnAge.commitEdit();
         } catch ( java.text.ParseException e ) { spnAge.setValue(0); }
         int age = (Integer) spnAge.getValue();
-        if (Main.validator.isValidEmail(email) && Main.validator.isValidName(name) && Main.validator.isValidPassword(password) && Main.validator.isValidPhoneNumber(phoneNumb) && age>=1 && age <=150){
+        if (Main.validator.isValidEmail(email) && Main.validator.isValidName(name) && Main.validator.isValidPassword(password) && Main.validator.isValidPhoneNumber(phoneNumb) && age>=18 && age <=100){
            admin.setAge(age);
            admin.setEmail(email);
            admin.setName(name);

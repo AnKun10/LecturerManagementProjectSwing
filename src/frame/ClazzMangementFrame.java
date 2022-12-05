@@ -32,7 +32,9 @@ public class ClazzMangementFrame extends javax.swing.JFrame {
     
     public ClazzMangementFrame(Admin admin, ArrayList<Clazz> clazzes, String workplace){
         initComponents();
+        this.setLocationRelativeTo(null);
         this.workplace = workplace;
+        this.admin = admin;
         for (Clazz clazz : main.Main.clazzes) {
             if (WorkplaceConstant.DICHVONGHAU.equals(workplace)){
                 this.clazzes.add(clazz);
@@ -82,6 +84,12 @@ public class ClazzMangementFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         btnGroupSchedule = new javax.swing.ButtonGroup();
+        diaSuccessfullyAdded = new javax.swing.JDialog();
+        lblSuccessfullyAddedDialog = new javax.swing.JLabel();
+        btnCloseAddedDialog = new javax.swing.JButton();
+        diaSuccessfullyEdited = new javax.swing.JDialog();
+        lblSuccessfullyEditedDialog = new javax.swing.JLabel();
+        btnCloseEditedDialog = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         lblName = new javax.swing.JLabel();
@@ -97,11 +105,78 @@ public class ClazzMangementFrame extends javax.swing.JFrame {
         btnLecturersList = new javax.swing.JButton();
         spnLecturerId = new javax.swing.JSpinner();
         chkLecturerIdLeftBlank = new javax.swing.JCheckBox();
+        btnBackToHomePage = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         menuSetting = new javax.swing.JMenu();
         menuSecurity = new javax.swing.JMenuItem();
         ckbmenuDarkMode = new javax.swing.JCheckBoxMenuItem();
         menuAbout = new javax.swing.JMenu();
+
+        lblSuccessfullyAddedDialog.setText("Successfully Added !");
+
+        btnCloseAddedDialog.setText("Ok");
+        btnCloseAddedDialog.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCloseAddedDialogActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout diaSuccessfullyAddedLayout = new javax.swing.GroupLayout(diaSuccessfullyAdded.getContentPane());
+        diaSuccessfullyAdded.getContentPane().setLayout(diaSuccessfullyAddedLayout);
+        diaSuccessfullyAddedLayout.setHorizontalGroup(
+            diaSuccessfullyAddedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(diaSuccessfullyAddedLayout.createSequentialGroup()
+                .addGroup(diaSuccessfullyAddedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(diaSuccessfullyAddedLayout.createSequentialGroup()
+                        .addGap(150, 150, 150)
+                        .addComponent(btnCloseAddedDialog))
+                    .addGroup(diaSuccessfullyAddedLayout.createSequentialGroup()
+                        .addGap(127, 127, 127)
+                        .addComponent(lblSuccessfullyAddedDialog)))
+                .addContainerGap(141, Short.MAX_VALUE))
+        );
+        diaSuccessfullyAddedLayout.setVerticalGroup(
+            diaSuccessfullyAddedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(diaSuccessfullyAddedLayout.createSequentialGroup()
+                .addGap(108, 108, 108)
+                .addComponent(lblSuccessfullyAddedDialog)
+                .addGap(65, 65, 65)
+                .addComponent(btnCloseAddedDialog)
+                .addContainerGap(77, Short.MAX_VALUE))
+        );
+
+        lblSuccessfullyEditedDialog.setText("Successfully Edited !");
+
+        btnCloseEditedDialog.setText("Ok");
+        btnCloseEditedDialog.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCloseEditedDialogActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout diaSuccessfullyEditedLayout = new javax.swing.GroupLayout(diaSuccessfullyEdited.getContentPane());
+        diaSuccessfullyEdited.getContentPane().setLayout(diaSuccessfullyEditedLayout);
+        diaSuccessfullyEditedLayout.setHorizontalGroup(
+            diaSuccessfullyEditedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(diaSuccessfullyEditedLayout.createSequentialGroup()
+                .addGroup(diaSuccessfullyEditedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(diaSuccessfullyEditedLayout.createSequentialGroup()
+                        .addGap(150, 150, 150)
+                        .addComponent(btnCloseEditedDialog))
+                    .addGroup(diaSuccessfullyEditedLayout.createSequentialGroup()
+                        .addGap(127, 127, 127)
+                        .addComponent(lblSuccessfullyEditedDialog)))
+                .addContainerGap(143, Short.MAX_VALUE))
+        );
+        diaSuccessfullyEditedLayout.setVerticalGroup(
+            diaSuccessfullyEditedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(diaSuccessfullyEditedLayout.createSequentialGroup()
+                .addGap(108, 108, 108)
+                .addComponent(lblSuccessfullyEditedDialog)
+                .addGap(65, 65, 65)
+                .addComponent(btnCloseEditedDialog)
+                .addContainerGap(77, Short.MAX_VALUE))
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -153,11 +228,6 @@ public class ClazzMangementFrame extends javax.swing.JFrame {
 
         btnGroupSchedule.add(rdEv);
         rdEv.setText("Mon, Wed, Fri ");
-        rdEv.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                rdEvMouseClicked(evt);
-            }
-        });
         rdEv.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rdEvActionPerformed(evt);
@@ -207,6 +277,13 @@ public class ClazzMangementFrame extends javax.swing.JFrame {
             }
         });
 
+        btnBackToHomePage.setText("Back to Home Page");
+        btnBackToHomePage.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackToHomePageActionPerformed(evt);
+            }
+        });
+
         menuSetting.setText("Setting");
         menuSetting.setToolTipText("");
         menuSetting.addActionListener(new java.awt.event.ActionListener() {
@@ -247,30 +324,32 @@ public class ClazzMangementFrame extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnAdd)
-                        .addGap(32, 32, 32)
-                        .addComponent(btnEdit)
-                        .addGap(28, 28, 28)
-                        .addComponent(btnLecturersList))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblSchedule)
-                            .addComponent(lblName)
-                            .addComponent(lblSpeciality)
-                            .addComponent(lblClassName))
-                        .addGap(28, 28, 28)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(rdOdd)
-                                .addComponent(rdEv)
-                                .addComponent(cboSpeciality, 0, 193, Short.MAX_VALUE)
-                                .addComponent(txtClassName))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(spnLecturerId)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(chkLecturerIdLeftBlank)))))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(btnAdd)
+                            .addGap(32, 32, 32)
+                            .addComponent(btnEdit)
+                            .addGap(28, 28, 28)
+                            .addComponent(btnLecturersList))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(lblSchedule)
+                                .addComponent(lblName)
+                                .addComponent(lblSpeciality)
+                                .addComponent(lblClassName))
+                            .addGap(28, 28, 28)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(rdOdd)
+                                    .addComponent(rdEv)
+                                    .addComponent(cboSpeciality, 0, 193, Short.MAX_VALUE)
+                                    .addComponent(txtClassName))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(spnLecturerId)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(chkLecturerIdLeftBlank)))))
+                    .addComponent(btnBackToHomePage))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 585, Short.MAX_VALUE)
                 .addGap(17, 17, 17))
@@ -280,7 +359,9 @@ public class ClazzMangementFrame extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(30, 30, 30)
+                        .addGap(14, 14, 14)
+                        .addComponent(btnBackToHomePage)
+                        .addGap(26, 26, 26)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblName)
                             .addComponent(spnLecturerId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -299,12 +380,12 @@ public class ClazzMangementFrame extends javax.swing.JFrame {
                             .addComponent(rdEv))
                         .addGap(27, 27, 27)
                         .addComponent(rdOdd)
-                        .addGap(81, 81, 81)
+                        .addGap(62, 62, 62)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnAdd)
                             .addComponent(btnEdit)
                             .addComponent(btnLecturersList))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 79, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -356,10 +437,13 @@ public class ClazzMangementFrame extends javax.swing.JFrame {
         else if (rdOdd.isSelected()){
             schedule = rdOdd.getText();
         }
+        
         Clazz clazzNew = new Clazz(className, this.workplace, speciality, schedule, lecturer);
         clazzes.add(clazzNew);
         Main.clazzes.add(clazzNew);
-        System.out.println(clazzes);
+        diaSuccessfullyAdded.pack();
+        diaSuccessfullyAdded.setVisible(true);
+        diaSuccessfullyAdded.getPreferredSize();
         displayJTable(jTable1);
     }//GEN-LAST:event_btnAddActionPerformed
 
@@ -371,6 +455,9 @@ public class ClazzMangementFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTable1KeyPressed
 
+    // lên gg tham khảo
+    // xấu dã man chả hiểu sao cho nó đen xì 
+    // e có thể cho background image hoặc background color
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
         // TODO add your handling code here:
         if(evt.getClickCount()==1){
@@ -441,6 +528,9 @@ public class ClazzMangementFrame extends javax.swing.JFrame {
         }
         clazz.setSchedule(schedule);
         clazzes.set(row, clazz);
+        diaSuccessfullyEdited.pack();
+        diaSuccessfullyEdited.setVisible(true);
+        diaSuccessfullyEdited.getPreferredSize();
         displayJTable(jTable1);
     }//GEN-LAST:event_btnEditActionPerformed
 
@@ -474,6 +564,22 @@ public class ClazzMangementFrame extends javax.swing.JFrame {
     private void chkLecturerIdLeftBlankActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkLecturerIdLeftBlankActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_chkLecturerIdLeftBlankActionPerformed
+
+    private void btnBackToHomePageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackToHomePageActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        new HomeFrame(admin).setVisible(true);
+    }//GEN-LAST:event_btnBackToHomePageActionPerformed
+
+    private void btnCloseAddedDialogActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseAddedDialogActionPerformed
+        // TODO add your handling code here:
+        diaSuccessfullyAdded.setVisible(false);
+    }//GEN-LAST:event_btnCloseAddedDialogActionPerformed
+
+    private void btnCloseEditedDialogActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseEditedDialogActionPerformed
+        // TODO add your handling code here:
+        diaSuccessfullyEdited.setVisible(false);
+    }//GEN-LAST:event_btnCloseEditedDialogActionPerformed
 
     /**
      * @param args the command line arguments
@@ -513,12 +619,17 @@ public class ClazzMangementFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdd;
+    private javax.swing.JButton btnBackToHomePage;
+    private javax.swing.JButton btnCloseAddedDialog;
+    private javax.swing.JButton btnCloseEditedDialog;
     private javax.swing.JButton btnEdit;
     private javax.swing.ButtonGroup btnGroupSchedule;
     private javax.swing.JButton btnLecturersList;
     private javax.swing.JComboBox<String> cboSpeciality;
     private javax.swing.JCheckBox chkLecturerIdLeftBlank;
     private javax.swing.JCheckBoxMenuItem ckbmenuDarkMode;
+    private javax.swing.JDialog diaSuccessfullyAdded;
+    private javax.swing.JDialog diaSuccessfullyEdited;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
@@ -526,6 +637,8 @@ public class ClazzMangementFrame extends javax.swing.JFrame {
     private javax.swing.JLabel lblName;
     private javax.swing.JLabel lblSchedule;
     private javax.swing.JLabel lblSpeciality;
+    private javax.swing.JLabel lblSuccessfullyAddedDialog;
+    private javax.swing.JLabel lblSuccessfullyEditedDialog;
     private javax.swing.JMenu menuAbout;
     private javax.swing.JMenuItem menuSecurity;
     private javax.swing.JMenu menuSetting;

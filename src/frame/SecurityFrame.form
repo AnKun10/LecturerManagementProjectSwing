@@ -168,8 +168,8 @@
                               <Group type="102" alignment="1" attributes="0">
                                   <Component id="lblAge" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="90" max="-2" attributes="0"/>
-                                  <Component id="spnAge" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="220" max="-2" attributes="0"/>
+                                  <Component id="spnAge" min="-2" pref="150" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="150" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>

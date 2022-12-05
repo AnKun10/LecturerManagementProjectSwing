@@ -7,7 +7,9 @@ package frame;
 import constant.WorkplaceConstant;
 import entity.Admin;
 import java.awt.Color;
+import java.awt.Image;
 import java.util.ArrayList;
+import javax.swing.Icon;
 import main.Main;
 
 /**
@@ -20,13 +22,16 @@ public class HomeFrame extends javax.swing.JFrame {
      * Creates new form HomeFrame
      */
     private Admin admin;
-    private boolean LecturerSchedule;
-    public HomeFrame() {
+   
+    public HomeFrame(Admin admin){
         initComponents();
+        this.setLocationRelativeTo(null);
+        this.admin = admin;
+        this.getContentPane().setBackground(new Color(204, 204, 255));
     }
     
-    public HomeFrame(Admin admin){
-        this.admin = admin;
+    public HomeFrame() {
+        initComponents();
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -41,6 +46,9 @@ public class HomeFrame extends javax.swing.JFrame {
         btnNguyenDinhChieu = new javax.swing.JButton();
         btnToHuu = new javax.swing.JButton();
         btnLogout = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         menuSetting = new javax.swing.JMenu();
         menuSecurity = new javax.swing.JMenuItem();
@@ -49,7 +57,10 @@ public class HomeFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        btnDichVongHau.setBackground(new java.awt.Color(204, 204, 255));
+        btnDichVongHau.setIcon(new javax.swing.ImageIcon("C:\\Users\\Admin\\Downloads\\dvh.png")); // NOI18N
         btnDichVongHau.setText("Dịch Vọng Hậu");
+        btnDichVongHau.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(153, 153, 255)));
         btnDichVongHau.setMaximumSize(new java.awt.Dimension(138, 138));
         btnDichVongHau.setMinimumSize(new java.awt.Dimension(138, 138));
         btnDichVongHau.addActionListener(new java.awt.event.ActionListener() {
@@ -58,26 +69,47 @@ public class HomeFrame extends javax.swing.JFrame {
             }
         });
 
+        btnNguyenDinhChieu.setIcon(new javax.swing.ImageIcon("C:\\Users\\Admin\\Downloads\\nguyendinhchieu.jpg")); // NOI18N
         btnNguyenDinhChieu.setText("Nguyễn Đình Chiểu");
+        btnNguyenDinhChieu.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(153, 153, 255)));
         btnNguyenDinhChieu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNguyenDinhChieuActionPerformed(evt);
             }
         });
 
+        btnToHuu.setIcon(new javax.swing.ImageIcon("C:\\Users\\Admin\\Downloads\\tohuu.jpg")); // NOI18N
         btnToHuu.setText("Tố Hữu");
+        btnToHuu.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(153, 153, 255)));
         btnToHuu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnToHuuActionPerformed(evt);
             }
         });
 
+        btnLogout.setBackground(new java.awt.Color(204, 204, 255));
+        btnLogout.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        btnLogout.setForeground(new java.awt.Color(102, 153, 255));
         btnLogout.setText("Logout");
         btnLogout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLogoutActionPerformed(evt);
             }
         });
+
+        jLabel1.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(102, 153, 255));
+        jLabel1.setText("Dịch Vọng Hậu");
+
+        jLabel2.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(102, 153, 255));
+        jLabel2.setText("Nguyễn Đình Chiểu");
+
+        jLabel3.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(102, 153, 255));
+        jLabel3.setText("Tố Hữu");
+
+        jMenuBar1.setPreferredSize(new java.awt.Dimension(128, 50));
 
         menuSetting.setText("Setting");
         menuSetting.setToolTipText("");
@@ -117,30 +149,46 @@ public class HomeFrame extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addComponent(btnDichVongHau, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnNguyenDinhChieu, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37)
-                .addComponent(btnToHuu, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(276, 276, 276)
-                .addComponent(btnLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 341, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(283, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 22, Short.MAX_VALUE)
+                        .addComponent(btnDichVongHau, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(28, 28, 28)
+                        .addComponent(btnNguyenDinhChieu, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(26, 26, 26)
+                        .addComponent(btnToHuu, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(23, 23, 23))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(249, 249, 249)
+                        .addComponent(jLabel1)
+                        .addGap(434, 434, 434)
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel3)
+                        .addGap(327, 327, 327))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(871, 871, 871))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(100, 100, 100)
+                .addGap(91, 91, 91)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnDichVongHau, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnNguyenDinhChieu, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnToHuu, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel3))
+                .addGap(30, 30, 30)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnDichVongHau, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnNguyenDinhChieu, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnToHuu, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 136, Short.MAX_VALUE)
                 .addComponent(btnLogout)
-                .addGap(15, 15, 15))
+                .addGap(81, 81, 81))
         );
 
         pack();
@@ -230,6 +278,9 @@ public class HomeFrame extends javax.swing.JFrame {
     private javax.swing.JButton btnNguyenDinhChieu;
     private javax.swing.JButton btnToHuu;
     private javax.swing.JCheckBoxMenuItem ckbmenuDarkMode;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu menuAbout;
     private javax.swing.JMenuItem menuSecurity;
