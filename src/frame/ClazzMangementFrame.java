@@ -30,7 +30,11 @@ public class ClazzMangementFrame extends javax.swing.JFrame {
         for (Clazz clazz : main.Main.clazzes) {
             if (WorkplaceConstant.DICHVONGHAU.equals(workplace)){
                 this.clazzes.add(clazz);
-            }
+            } else if (WorkplaceConstant.TOHUU.equals(workplace)){
+                this.clazzes.add(clazz);
+            } else if (WorkplaceConstant.NGUYENDINHCHIEU.equals(workplace)){
+                this.clazzes.add(clazz);
+            }   
         }
         displayJTable();
     }
@@ -131,6 +135,11 @@ public class ClazzMangementFrame extends javax.swing.JFrame {
 
         btnGroupSchedule.add(rdEv);
         rdEv.setText("Mon, Wed, Fri ");
+        rdEv.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                rdEvMouseClicked(evt);
+            }
+        });
         rdEv.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rdEvActionPerformed(evt);
@@ -332,6 +341,16 @@ public class ClazzMangementFrame extends javax.swing.JFrame {
                 cboSpeciality.setSelectedIndex(4);
             }
             txtClassName.setText(clazzes.get(row).getName());
+            if (clazzes.get(row).getSchedule().equals(rdEv.getText())) {
+                rdEv.setSelected(true);
+                rdOdd.setSelected(false);
+            } else if (clazzes.get(row).getSchedule().equals(rdOdd.getText())) {
+                rdEv.setSelected(false);
+                rdOdd.setSelected(true);
+            } else {
+                rdEv.setSelected(false);
+                rdOdd.setSelected(false);
+            }
         }
     }//GEN-LAST:event_jTable1MouseClicked
 
@@ -340,7 +359,6 @@ public class ClazzMangementFrame extends javax.swing.JFrame {
         int row = jTable1.getSelectedRow();
         Clazz clazz = clazzes.get(row);
         clazz.setLecturerName(txtLecturerName.getText());
-        clazzes.set(row, clazz);
         clazz.setName( txtClassName.getText());
         clazz.setSpeciality( (String) cboSpeciality.getSelectedItem());
         String schedule ="";
@@ -351,8 +369,16 @@ public class ClazzMangementFrame extends javax.swing.JFrame {
             schedule = rdOdd.getText();
         }
         clazz.setSchedule(schedule);
+        clazzes.set(row, clazz);
         displayJTable();
     }//GEN-LAST:event_btnEditActionPerformed
+
+    private void rdEvMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rdEvMouseClicked
+        // TODO add your handling code here:
+        if (evt.getClickCount()==1 && rdEv.isSelected()) {
+            rdEv.setSelected(false);
+        }
+    }//GEN-LAST:event_rdEvMouseClicked
 
     /**
      * @param args the command line arguments
