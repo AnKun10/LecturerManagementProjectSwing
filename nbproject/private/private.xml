@@ -3,11 +3,16 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/Users/Admin/OneDrive/Documents/NetBeansProjects/LecturerManagementProjectSwing/src/frame/LoginFrame.java</file>
+            <file>file:/C:/Users/Admin/OneDrive/Documents/NetBeansProjects/LecturerManagementProjectSwing/src/validator/Validator.java</file>
+            <file>file:/C:/Users/Admin/OneDrive/Documents/NetBeansProjects/LecturerManagementProjectSwing/src/constant/RegexConstant.java</file>
             <file>file:/C:/Users/Admin/OneDrive/Documents/NetBeansProjects/LecturerManagementProjectSwing/src/main/Main.java</file>
             <file>file:/C:/Users/Admin/OneDrive/Documents/NetBeansProjects/LecturerManagementProjectSwing/src/frame/HomeFrame.java</file>
             <file>file:/C:/Users/Admin/OneDrive/Documents/NetBeansProjects/LecturerManagementProjectSwing/src/frame/ClazzMangementFrame.java</file>
             <file>file:/C:/Users/Admin/OneDrive/Documents/NetBeansProjects/LecturerManagementProjectSwing/src/constant/WorkplaceConstant.java</file>
             <file>file:/C:/Users/Admin/OneDrive/Documents/NetBeansProjects/LecturerManagementProjectSwing/src/entity/Lecturer.java</file>
+            <file>file:/C:/Users/Admin/OneDrive/Documents/NetBeansProjects/LecturerManagementProjectSwing/src/frame/SecurityFrame.java</file>
+            <file>file:/C:/Users/Admin/OneDrive/Documents/NetBeansProjects/LecturerManagementProjectSwing/src/entity/Admin.java</file>
             <file>file:/C:/Users/Admin/OneDrive/Documents/NetBeansProjects/LecturerManagementProjectSwing/src/constant/SpecialityConstant.java</file>
         </group>
     </open-files>
