@@ -84,15 +84,6 @@ public final class Clazz {
         this.lecturer = lecturer;
     }
 
-    public Clazz(String name, String workplace, String speciality, String schedule, String lecturerName) {
-        this.name = name;
-        this.workplace = workplace;
-        this.speciality = speciality;
-        this.schedule = schedule;
-        this.lecturerName = lecturerName;
-        this.id = ++autoId;
-    }
-
     @Override
     public String toString() {
         return "Clazz{" + "name=" + name + ", workplace=" + workplace + ", speciality=" + speciality + ", schedule=" + schedule + ", lecturer=" + lecturer + ", lecturerName=" + lecturerName + ", id=" + id + '}';

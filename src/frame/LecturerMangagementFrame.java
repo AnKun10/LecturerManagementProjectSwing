@@ -4,6 +4,7 @@
  */
 package frame;
 
+import constant.WorkplaceConstant;
 import entity.Admin;
 import entity.Clazz;
 import entity.Lecturer;
@@ -27,12 +28,22 @@ public class LecturerMangagementFrame extends javax.swing.JFrame {
     private String workplace;
     private ArrayList<Clazz> clazzes;
     
-    public LecturerMangagementFrame(Admin admin, String workplace, ArrayList<Clazz> clazzes){
+    public LecturerMangagementFrame(Admin admin, String workplace){
         initComponents();
+        this.getContentPane().setBackground(new Color(204, 204, 255));
         this.setLocationRelativeTo(null);
         this.admin = admin;
         this.workplace = workplace;
-        this.clazzes = clazzes;
+        this.clazzes = Main.clazzes;
+        for (Clazz clazz : clazzes) {
+            if (WorkplaceConstant.DICHVONGHAU.equals(workplace)){
+                this.clazzes.add(clazz);
+            } else if (WorkplaceConstant.NGUYENDINHCHIEU.equals(workplace)) {
+                this.clazzes.add(clazz);  
+            } else if (WorkplaceConstant.TOHUU.equals(workplace)) {
+                this.clazzes.add(clazz);  
+            }
+        }
         for (Lecturer lecturer : Main.lecturers) {
             Vector vectorRow = new Vector();
             vectorRow.add(lecturer.getId());
@@ -46,6 +57,7 @@ public class LecturerMangagementFrame extends javax.swing.JFrame {
     }
     public LecturerMangagementFrame() {
         initComponents();
+        this.getContentPane().setBackground(new Color(204, 204, 255));
     }
 
     /**
@@ -84,7 +96,6 @@ public class LecturerMangagementFrame extends javax.swing.JFrame {
         menuSetting = new javax.swing.JMenu();
         menuSecurity = new javax.swing.JMenuItem();
         ckbmenuDarkMode = new javax.swing.JCheckBoxMenuItem();
-        menuAbout = new javax.swing.JMenu();
 
         lblInvalidDialog.setText("INVALID INPUT, PLEASE TRY AGAIN !");
 
@@ -187,6 +198,9 @@ public class LecturerMangagementFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        btnBackToClazzMangagementPage.setBackground(new java.awt.Color(102, 102, 255));
+        btnBackToClazzMangagementPage.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
+        btnBackToClazzMangagementPage.setForeground(new java.awt.Color(255, 204, 255));
         btnBackToClazzMangagementPage.setText("Back to the Previous Page");
         btnBackToClazzMangagementPage.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -194,14 +208,38 @@ public class LecturerMangagementFrame extends javax.swing.JFrame {
             }
         });
 
+        lblName.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
+        lblName.setForeground(new java.awt.Color(102, 153, 255));
         lblName.setText("Name:");
 
+        lblAge.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
+        lblAge.setForeground(new java.awt.Color(102, 153, 255));
         lblAge.setText("Age:");
 
+        lblEmail.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
+        lblEmail.setForeground(new java.awt.Color(102, 153, 255));
         lblEmail.setText("Email:");
 
+        lblPhoneNumber.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
+        lblPhoneNumber.setForeground(new java.awt.Color(102, 153, 255));
         lblPhoneNumber.setText("Phone Number:");
 
+        txtPhoneNumber.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+
+        txtEmail.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        txtEmail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtEmailActionPerformed(evt);
+            }
+        });
+
+        txtName.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+
+        spnAge.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+
+        btnAdd.setBackground(new java.awt.Color(102, 102, 255));
+        btnAdd.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
+        btnAdd.setForeground(new java.awt.Color(255, 204, 255));
         btnAdd.setText("Add");
         btnAdd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -209,6 +247,9 @@ public class LecturerMangagementFrame extends javax.swing.JFrame {
             }
         });
 
+        btnEdit.setBackground(new java.awt.Color(102, 102, 255));
+        btnEdit.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
+        btnEdit.setForeground(new java.awt.Color(255, 204, 255));
         btnEdit.setText("Edit");
         btnEdit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -249,6 +290,7 @@ public class LecturerMangagementFrame extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTable1);
 
+        chkLecturerAgeLeftBlank.setFont(new java.awt.Font("Comic Sans MS", 0, 16)); // NOI18N
         chkLecturerAgeLeftBlank.setText("Left Blank");
         chkLecturerAgeLeftBlank.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -256,8 +298,10 @@ public class LecturerMangagementFrame extends javax.swing.JFrame {
             }
         });
 
+        menuSetting.setForeground(new java.awt.Color(102, 153, 255));
         menuSetting.setText("Setting");
         menuSetting.setToolTipText("");
+        menuSetting.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
         menuSetting.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuSettingActionPerformed(evt);
@@ -265,6 +309,7 @@ public class LecturerMangagementFrame extends javax.swing.JFrame {
         });
 
         menuSecurity.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.ALT_DOWN_MASK | java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        menuSecurity.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
         menuSecurity.setText("Security");
         menuSecurity.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -274,6 +319,7 @@ public class LecturerMangagementFrame extends javax.swing.JFrame {
         menuSetting.add(menuSecurity);
 
         ckbmenuDarkMode.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_D, java.awt.event.InputEvent.ALT_DOWN_MASK | java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        ckbmenuDarkMode.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
         ckbmenuDarkMode.setSelected(true);
         ckbmenuDarkMode.setText("Dark Mode");
         ckbmenuDarkMode.addActionListener(new java.awt.event.ActionListener() {
@@ -285,9 +331,6 @@ public class LecturerMangagementFrame extends javax.swing.JFrame {
 
         jMenuBar1.add(menuSetting);
 
-        menuAbout.setText("About");
-        jMenuBar1.add(menuAbout);
-
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -297,33 +340,38 @@ public class LecturerMangagementFrame extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(btnBackToClazzMangagementPage))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(67, 67, 67)
-                            .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(32, 32, 32)
-                            .addComponent(btnEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addContainerGap()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(21, 21, 21)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
                                 .addComponent(lblAge)
-                                .addComponent(lblName)
-                                .addComponent(lblEmail)
-                                .addComponent(lblPhoneNumber))
-                            .addGap(24, 24, 24)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(spnAge)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(chkLecturerAgeLeftBlank, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(txtPhoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 643, Short.MAX_VALUE)
-                .addContainerGap())
+                                .addGap(126, 126, 126)
+                                .addComponent(spnAge)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(chkLecturerAgeLeftBlank))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btnBackToClazzMangagementPage)
+                                    .addComponent(lblName)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(lblEmail)
+                                            .addComponent(lblPhoneNumber))
+                                        .addGap(35, 35, 35)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(txtPhoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(167, 167, 167)
+                                        .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(0, 0, Short.MAX_VALUE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(91, 91, 91)
+                        .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(61, 61, 61)
+                        .addComponent(btnEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 658, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(19, 19, 19))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -331,34 +379,40 @@ public class LecturerMangagementFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(14, 14, 14)
                         .addComponent(btnBackToClazzMangagementPage)
-                        .addGap(72, 72, 72)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(61, 61, 61)
+                                .addComponent(lblName))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(lblName)
-                                    .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(47, 47, 47))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(lblAge)
-                                .addComponent(spnAge, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(chkLecturerAgeLeftBlank)))
-                        .addGap(22, 22, 22)
+                                .addGap(25, 25, 25)
+                                .addComponent(lblEmail)
+                                .addGap(18, 18, 18))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(chkLecturerAgeLeftBlank, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(spnAge, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(20, 20, 20)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblEmail)
-                            .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblPhoneNumber)
                             .addComponent(txtPhoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnAdd)
                             .addComponent(btnEdit))
                         .addGap(71, 71, 71))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(14, Short.MAX_VALUE))))
+                        .addContainerGap(9, Short.MAX_VALUE))))
         );
 
         pack();
@@ -462,9 +516,9 @@ public class LecturerMangagementFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEditActionPerformed
 
     private void btnBackToClazzMangagementPageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackToClazzMangagementPageActionPerformed
-        // TODO add your handling code here:
+        System.out.println("M2: "+ clazzes);
         this.setVisible(false);
-        new ClazzMangementFrame(admin, clazzes, workplace).setVisible(true);
+        new ClazzMangementFrame(admin, workplace).setVisible(true);
     }//GEN-LAST:event_btnBackToClazzMangagementPageActionPerformed
 
     private void btnCloseInvalidDialogActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseInvalidDialogActionPerformed
@@ -485,6 +539,10 @@ public class LecturerMangagementFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         diaSuccessfullyEdited.setVisible(false);
     }//GEN-LAST:event_btnCloseEditedDialogActionPerformed
+
+    private void txtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtEmailActionPerformed
 
     /**
      * @param args the command line arguments
@@ -543,7 +601,6 @@ public class LecturerMangagementFrame extends javax.swing.JFrame {
     private javax.swing.JLabel lblPhoneNumber;
     private javax.swing.JLabel lblSuccessfullyAddedDialog;
     private javax.swing.JLabel lblSuccessfullyEditedDialog;
-    private javax.swing.JMenu menuAbout;
     private javax.swing.JMenuItem menuSecurity;
     private javax.swing.JMenu menuSetting;
     private javax.swing.JSpinner spnAge;

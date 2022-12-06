@@ -32,6 +32,7 @@ public class HomeFrame extends javax.swing.JFrame {
     
     public HomeFrame() {
         initComponents();
+        this.getContentPane().setBackground(new Color(204, 204, 255));
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -53,7 +54,6 @@ public class HomeFrame extends javax.swing.JFrame {
         menuSetting = new javax.swing.JMenu();
         menuSecurity = new javax.swing.JMenuItem();
         ckbmenuDarkMode = new javax.swing.JCheckBoxMenuItem();
-        menuAbout = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -97,22 +97,24 @@ public class HomeFrame extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(102, 153, 255));
         jLabel1.setText("Dịch Vọng Hậu");
 
-        jLabel2.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(102, 153, 255));
         jLabel2.setText("Nguyễn Đình Chiểu");
 
-        jLabel3.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(102, 153, 255));
         jLabel3.setText("Tố Hữu");
 
         jMenuBar1.setPreferredSize(new java.awt.Dimension(128, 50));
 
+        menuSetting.setForeground(new java.awt.Color(102, 153, 255));
         menuSetting.setText("Setting");
         menuSetting.setToolTipText("");
+        menuSetting.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
         menuSetting.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuSettingActionPerformed(evt);
@@ -120,6 +122,7 @@ public class HomeFrame extends javax.swing.JFrame {
         });
 
         menuSecurity.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.ALT_DOWN_MASK | java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        menuSecurity.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
         menuSecurity.setText("Security");
         menuSecurity.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -129,6 +132,7 @@ public class HomeFrame extends javax.swing.JFrame {
         menuSetting.add(menuSecurity);
 
         ckbmenuDarkMode.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_D, java.awt.event.InputEvent.ALT_DOWN_MASK | java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        ckbmenuDarkMode.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
         ckbmenuDarkMode.setSelected(true);
         ckbmenuDarkMode.setText("Dark Mode");
         ckbmenuDarkMode.addActionListener(new java.awt.event.ActionListener() {
@@ -139,9 +143,6 @@ public class HomeFrame extends javax.swing.JFrame {
         menuSetting.add(ckbmenuDarkMode);
 
         jMenuBar1.add(menuSetting);
-
-        menuAbout.setText("About");
-        jMenuBar1.add(menuAbout);
 
         setJMenuBar(jMenuBar1);
 
@@ -167,7 +168,7 @@ public class HomeFrame extends javax.swing.JFrame {
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel3)
-                        .addGap(327, 327, 327))))
+                        .addGap(286, 286, 286))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -197,19 +198,19 @@ public class HomeFrame extends javax.swing.JFrame {
     private void btnDichVongHauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDichVongHauActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
-        new ClazzMangementFrame(admin, Main.clazzes, WorkplaceConstant.DICHVONGHAU.value).setVisible(true);
+        new ClazzMangementFrame(admin, WorkplaceConstant.DICHVONGHAU.value).setVisible(true);
     }//GEN-LAST:event_btnDichVongHauActionPerformed
 
     private void btnToHuuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnToHuuActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
-        new ClazzMangementFrame(admin, Main.clazzes, WorkplaceConstant.TOHUU.value).setVisible(true);
+        new ClazzMangementFrame(admin, WorkplaceConstant.TOHUU.value).setVisible(true);
     }//GEN-LAST:event_btnToHuuActionPerformed
 
     private void btnNguyenDinhChieuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNguyenDinhChieuActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
-        new ClazzMangementFrame(admin, Main.clazzes, WorkplaceConstant.NGUYENDINHCHIEU.value).setVisible(true);
+        new ClazzMangementFrame(admin, WorkplaceConstant.NGUYENDINHCHIEU.value).setVisible(true);
     }//GEN-LAST:event_btnNguyenDinhChieuActionPerformed
 
     private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
@@ -282,7 +283,6 @@ public class HomeFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenu menuAbout;
     private javax.swing.JMenuItem menuSecurity;
     private javax.swing.JMenu menuSetting;
     // End of variables declaration//GEN-END:variables

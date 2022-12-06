@@ -30,12 +30,14 @@ public class ClazzMangementFrame extends javax.swing.JFrame {
     private Admin admin;
     private Lecturer lecturerOrigin;
     
-    public ClazzMangementFrame(Admin admin, ArrayList<Clazz> clazzes, String workplace){
+    public ClazzMangementFrame(Admin admin, String workplace){
+        this.clazzes= Main.clazzes;
         initComponents();
+        this.getContentPane().setBackground(new Color(204, 204, 255));
         this.setLocationRelativeTo(null);
         this.workplace = workplace;
         this.admin = admin;
-        for (Clazz clazz : main.Main.clazzes) {
+        for (Clazz clazz :clazzes) {
             if (WorkplaceConstant.DICHVONGHAU.equals(workplace)){
                 this.clazzes.add(clazz);
             } else if (WorkplaceConstant.NGUYENDINHCHIEU.equals(workplace)) {
@@ -44,7 +46,7 @@ public class ClazzMangementFrame extends javax.swing.JFrame {
                 this.clazzes.add(clazz);  
             }
         }
-        for (Clazz clazz : clazzes) {
+        for (Clazz clazz : this.clazzes) {
             Vector vectorRow = new Vector();
             vectorRow.add(clazz.getId());
             if (clazz.getLecturer() == null){
@@ -72,6 +74,7 @@ public class ClazzMangementFrame extends javax.swing.JFrame {
             vectorRow.add(clazz.getName());
             vectorRow.add(clazz.getSchedule());
         }
+        this.getContentPane().setBackground(new Color(204, 204, 255));
     }
 
     /**
@@ -110,7 +113,6 @@ public class ClazzMangementFrame extends javax.swing.JFrame {
         menuSetting = new javax.swing.JMenu();
         menuSecurity = new javax.swing.JMenuItem();
         ckbmenuDarkMode = new javax.swing.JCheckBoxMenuItem();
-        menuAbout = new javax.swing.JMenu();
 
         lblSuccessfullyAddedDialog.setText("Successfully Added !");
 
@@ -218,15 +220,25 @@ public class ClazzMangementFrame extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTable1);
 
+        lblName.setBackground(new java.awt.Color(204, 204, 255));
+        lblName.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
+        lblName.setForeground(new java.awt.Color(102, 153, 255));
         lblName.setText("Lecturer's Id:");
 
+        lblSpeciality.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
+        lblSpeciality.setForeground(new java.awt.Color(102, 153, 255));
         lblSpeciality.setText("Speciality:");
 
+        lblClassName.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
+        lblClassName.setForeground(new java.awt.Color(102, 153, 255));
         lblClassName.setText("Class's Name:");
 
+        lblSchedule.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
+        lblSchedule.setForeground(new java.awt.Color(102, 153, 255));
         lblSchedule.setText("Schedule:");
 
         btnGroupSchedule.add(rdEv);
+        rdEv.setFont(new java.awt.Font("Comic Sans MS", 0, 16)); // NOI18N
         rdEv.setText("Mon, Wed, Fri ");
         rdEv.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -235,6 +247,7 @@ public class ClazzMangementFrame extends javax.swing.JFrame {
         });
 
         btnGroupSchedule.add(rdOdd);
+        rdOdd.setFont(new java.awt.Font("Comic Sans MS", 0, 16)); // NOI18N
         rdOdd.setText("Tue, Thur, Sat");
         rdOdd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -242,6 +255,9 @@ public class ClazzMangementFrame extends javax.swing.JFrame {
             }
         });
 
+        cboSpeciality.setBackground(new java.awt.Color(204, 204, 255));
+        cboSpeciality.setFont(new java.awt.Font("Comic Sans MS", 0, 16)); // NOI18N
+        cboSpeciality.setForeground(new java.awt.Color(102, 153, 255));
         cboSpeciality.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "WEB BACK-END", "WEB FRONT-END", "DEVOPS & AWS", "MOBILE", "STEM" }));
         cboSpeciality.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -249,6 +265,11 @@ public class ClazzMangementFrame extends javax.swing.JFrame {
             }
         });
 
+        txtClassName.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+
+        btnAdd.setBackground(new java.awt.Color(102, 102, 255));
+        btnAdd.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
+        btnAdd.setForeground(new java.awt.Color(255, 204, 204));
         btnAdd.setText("Add");
         btnAdd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -256,6 +277,9 @@ public class ClazzMangementFrame extends javax.swing.JFrame {
             }
         });
 
+        btnEdit.setBackground(new java.awt.Color(102, 102, 255));
+        btnEdit.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
+        btnEdit.setForeground(new java.awt.Color(255, 204, 204));
         btnEdit.setText("Edit");
         btnEdit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -263,6 +287,9 @@ public class ClazzMangementFrame extends javax.swing.JFrame {
             }
         });
 
+        btnLecturersList.setBackground(new java.awt.Color(102, 102, 255));
+        btnLecturersList.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
+        btnLecturersList.setForeground(new java.awt.Color(255, 204, 204));
         btnLecturersList.setText("Lecturers' List");
         btnLecturersList.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -270,6 +297,9 @@ public class ClazzMangementFrame extends javax.swing.JFrame {
             }
         });
 
+        spnLecturerId.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+
+        chkLecturerIdLeftBlank.setFont(new java.awt.Font("Comic Sans MS", 0, 16)); // NOI18N
         chkLecturerIdLeftBlank.setText("Left Blank");
         chkLecturerIdLeftBlank.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -277,6 +307,9 @@ public class ClazzMangementFrame extends javax.swing.JFrame {
             }
         });
 
+        btnBackToHomePage.setBackground(new java.awt.Color(102, 102, 255));
+        btnBackToHomePage.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
+        btnBackToHomePage.setForeground(new java.awt.Color(255, 204, 255));
         btnBackToHomePage.setText("Back to Home Page");
         btnBackToHomePage.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -284,8 +317,10 @@ public class ClazzMangementFrame extends javax.swing.JFrame {
             }
         });
 
+        menuSetting.setForeground(new java.awt.Color(102, 153, 255));
         menuSetting.setText("Setting");
         menuSetting.setToolTipText("");
+        menuSetting.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
         menuSetting.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuSettingActionPerformed(evt);
@@ -293,6 +328,7 @@ public class ClazzMangementFrame extends javax.swing.JFrame {
         });
 
         menuSecurity.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.ALT_DOWN_MASK | java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        menuSecurity.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
         menuSecurity.setText("Security");
         menuSecurity.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -302,6 +338,7 @@ public class ClazzMangementFrame extends javax.swing.JFrame {
         menuSetting.add(menuSecurity);
 
         ckbmenuDarkMode.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_D, java.awt.event.InputEvent.ALT_DOWN_MASK | java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        ckbmenuDarkMode.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
         ckbmenuDarkMode.setSelected(true);
         ckbmenuDarkMode.setText("Dark Mode");
         ckbmenuDarkMode.addActionListener(new java.awt.event.ActionListener() {
@@ -312,9 +349,6 @@ public class ClazzMangementFrame extends javax.swing.JFrame {
         menuSetting.add(ckbmenuDarkMode);
 
         jMenuBar1.add(menuSetting);
-
-        menuAbout.setText("About");
-        jMenuBar1.add(menuAbout);
 
         setJMenuBar(jMenuBar1);
 
@@ -351,7 +385,7 @@ public class ClazzMangementFrame extends javax.swing.JFrame {
                                     .addComponent(chkLecturerIdLeftBlank)))))
                     .addComponent(btnBackToHomePage))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 585, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 547, Short.MAX_VALUE)
                 .addGap(17, 17, 17))
         );
         layout.setVerticalGroup(
@@ -375,35 +409,25 @@ public class ClazzMangementFrame extends javax.swing.JFrame {
                             .addComponent(lblClassName)
                             .addComponent(txtClassName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(19, 19, 19)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblSchedule)
-                            .addComponent(rdEv))
-                        .addGap(27, 27, 27)
+                        .addComponent(rdEv)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblSchedule)
+                        .addGap(14, 14, 14)
                         .addComponent(rdOdd)
-                        .addGap(62, 62, 62)
+                        .addGap(77, 77, 77)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnAdd)
                             .addComponent(btnEdit)
                             .addComponent(btnLecturersList))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void menuSecurityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuSecurityActionPerformed
-        // TODO add your handling code here:
-        this.setVisible(false);
-        new SecurityFrame(admin).setVisible(true);
-    }//GEN-LAST:event_menuSecurityActionPerformed
-
-    private void menuSettingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuSettingActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_menuSettingActionPerformed
 
     private void rdOddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdOddActionPerformed
         // TODO add your handling code here:
@@ -440,7 +464,7 @@ public class ClazzMangementFrame extends javax.swing.JFrame {
         
         Clazz clazzNew = new Clazz(className, this.workplace, speciality, schedule, lecturer);
         clazzes.add(clazzNew);
-        Main.clazzes.add(clazzNew);
+        //Main.clazzes.add(clazzNew);
         diaSuccessfullyAdded.pack();
         diaSuccessfullyAdded.setVisible(true);
         diaSuccessfullyAdded.getPreferredSize();
@@ -534,31 +558,11 @@ public class ClazzMangementFrame extends javax.swing.JFrame {
         displayJTable(jTable1);
     }//GEN-LAST:event_btnEditActionPerformed
 
-    private void ckbmenuDarkModeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ckbmenuDarkModeActionPerformed
-        // TODO add your handling code here:
-        if (ckbmenuDarkMode.isSelected()){
-            this.getContentPane().setBackground(Color.black);
-            lblClassName.setForeground(Color.white);
-            lblName.setForeground(Color.white);
-            lblSchedule.setForeground(Color.white);
-            lblSpeciality.setForeground(Color.white);
-            rdEv.setForeground(Color.white);
-            rdOdd.setForeground(Color.white);
-        } else {
-            this.getContentPane().setBackground(Color.white);
-            lblClassName.setForeground(Color.black);
-            lblName.setForeground(Color.black);
-            lblSchedule.setForeground(Color.black); 
-            lblSpeciality.setForeground(Color.black);
-            rdEv.setForeground(Color.black);
-            rdOdd.setForeground(Color.black);
-        }
-    }//GEN-LAST:event_ckbmenuDarkModeActionPerformed
-
     private void btnLecturersListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLecturersListActionPerformed
         // TODO add your handling code here:
+        System.out.println("M1: "+clazzes);
         this.setVisible(false);
-        new LecturerMangagementFrame(admin, workplace, clazzes).setVisible(true);
+        new LecturerMangagementFrame(admin, workplace).setVisible(true);
     }//GEN-LAST:event_btnLecturersListActionPerformed
 
     private void chkLecturerIdLeftBlankActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkLecturerIdLeftBlankActionPerformed
@@ -580,6 +584,37 @@ public class ClazzMangementFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         diaSuccessfullyEdited.setVisible(false);
     }//GEN-LAST:event_btnCloseEditedDialogActionPerformed
+
+    private void menuSettingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuSettingActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_menuSettingActionPerformed
+
+    private void ckbmenuDarkModeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ckbmenuDarkModeActionPerformed
+        // TODO add your handling code here:
+        if (ckbmenuDarkMode.isSelected()){
+            this.getContentPane().setBackground(Color.black);
+            lblClassName.setForeground(Color.white);
+            lblName.setForeground(Color.white);
+            lblSchedule.setForeground(Color.white);
+            lblSpeciality.setForeground(Color.white);
+            rdEv.setForeground(Color.white);
+            rdOdd.setForeground(Color.white);
+        } else {
+            this.getContentPane().setBackground(Color.white);
+            lblClassName.setForeground(Color.black);
+            lblName.setForeground(Color.black);
+            lblSchedule.setForeground(Color.black);
+            lblSpeciality.setForeground(Color.black);
+            rdEv.setForeground(Color.black);
+            rdOdd.setForeground(Color.black);
+        }
+    }//GEN-LAST:event_ckbmenuDarkModeActionPerformed
+
+    private void menuSecurityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuSecurityActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        new SecurityFrame(admin).setVisible(true);
+    }//GEN-LAST:event_menuSecurityActionPerformed
 
     /**
      * @param args the command line arguments
@@ -639,7 +674,6 @@ public class ClazzMangementFrame extends javax.swing.JFrame {
     private javax.swing.JLabel lblSpeciality;
     private javax.swing.JLabel lblSuccessfullyAddedDialog;
     private javax.swing.JLabel lblSuccessfullyEditedDialog;
-    private javax.swing.JMenu menuAbout;
     private javax.swing.JMenuItem menuSecurity;
     private javax.swing.JMenu menuSetting;
     private javax.swing.JRadioButton rdEv;

@@ -5,6 +5,7 @@
 package frame;
 
 import entity.Admin;
+import java.awt.Color;
 import main.Main;
 
 /**
@@ -19,6 +20,7 @@ public class SecurityFrame extends javax.swing.JFrame {
     private Admin admin;
     public SecurityFrame(Admin admin) {
         initComponents();
+        this.getContentPane().setBackground(new Color(204, 204, 255));
         this.setLocationRelativeTo(null);
         this.admin = admin;
  
@@ -31,6 +33,7 @@ public class SecurityFrame extends javax.swing.JFrame {
     }
     public SecurityFrame() {
         initComponents();
+        this.getContentPane().setBackground(new Color(204, 204, 255));
         
     }
 
@@ -134,18 +137,33 @@ public class SecurityFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        lblUsername.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
+        lblUsername.setForeground(new java.awt.Color(102, 153, 255));
         lblUsername.setText("2, Username:");
 
+        lblPassword.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
+        lblPassword.setForeground(new java.awt.Color(102, 153, 255));
         lblPassword.setText("3, Password:");
 
+        lblAge.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
+        lblAge.setForeground(new java.awt.Color(102, 153, 255));
         lblAge.setText("4, Age:");
 
+        lblEmail.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
+        lblEmail.setForeground(new java.awt.Color(102, 153, 255));
         lblEmail.setText("5, Email:");
 
+        lblPhoneNumber.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
+        lblPhoneNumber.setForeground(new java.awt.Color(102, 153, 255));
         lblPhoneNumber.setText("6, Phone Number:");
 
+        lblName.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
+        lblName.setForeground(new java.awt.Color(102, 153, 255));
         lblName.setText("1, Name:");
 
+        btnBackToHomePage.setBackground(new java.awt.Color(102, 102, 255));
+        btnBackToHomePage.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
+        btnBackToHomePage.setForeground(new java.awt.Color(255, 204, 255));
         btnBackToHomePage.setText("Back to Home Page");
         btnBackToHomePage.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -153,6 +171,9 @@ public class SecurityFrame extends javax.swing.JFrame {
             }
         });
 
+        btnUpdate.setBackground(new java.awt.Color(102, 102, 255));
+        btnUpdate.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
+        btnUpdate.setForeground(new java.awt.Color(255, 204, 255));
         btnUpdate.setText("Confirm Update");
         btnUpdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -160,17 +181,27 @@ public class SecurityFrame extends javax.swing.JFrame {
             }
         });
 
+        txtEmail.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+
+        txtName.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txtName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNameActionPerformed(evt);
             }
         });
 
+        txtPhoneNumber.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+
+        txtUsername.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txtUsername.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtUsernameActionPerformed(evt);
             }
         });
+
+        txtPassword.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+
+        spnAge.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -182,46 +213,39 @@ public class SecurityFrame extends javax.swing.JFrame {
                         .addGap(17, 17, 17)
                         .addComponent(btnBackToHomePage))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(434, 434, 434)
-                        .addComponent(btnUpdate))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(266, 266, 266)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addGroup(layout.createSequentialGroup()
-                                    .addComponent(lblPhoneNumber)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(txtPhoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(layout.createSequentialGroup()
                                     .addComponent(lblEmail)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(spnAge, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGroup(layout.createSequentialGroup()
-                                    .addComponent(lblPassword)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(lblUsername)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(lblName)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(lblPhoneNumber)
+                                    .addGap(18, 18, 18)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(btnUpdate)
+                                        .addComponent(txtPhoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(lblPassword, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(lblUsername, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(lblName, javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(layout.createSequentialGroup()
                                     .addComponent(lblAge)
-                                    .addGap(90, 90, 90)
-                                    .addComponent(spnAge, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(150, 150, 150))))))
-                .addContainerGap(299, Short.MAX_VALUE))
+                                    .addGap(390, 390, 390))))))
+                .addContainerGap(257, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(btnBackToHomePage)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblName)
                     .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -245,9 +269,9 @@ public class SecurityFrame extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblPhoneNumber)
                     .addComponent(txtPhoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(51, 51, 51)
+                .addGap(42, 42, 42)
                 .addComponent(btnUpdate)
-                .addGap(44, 44, 44))
+                .addGap(53, 53, 53))
         );
 
         pack();
